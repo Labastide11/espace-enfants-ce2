@@ -1,5 +1,8 @@
-// Espace Enfants CE2 — Mon métier — V0.9
+// Espace Enfants CE2 — Mon métier — V0.22
 // Tirage automatique hebdomadaire, binômes et mémorisation locale.
+// Affichage des métiers avec photo + prénom directement dans chaque carte.
+
+const MANIFEST_ELEVES = Array.isArray(window.NINO_ELEVES) ? window.NINO_ELEVES : [];
 
 const STUDENTS = [
   "Anis","Assya","Bilal","Espoir","Fahd","Hamza","Jinene","Khadidja",
@@ -23,6 +26,14 @@ const JOBS = [
 
 const HISTORY_KEY = "nino_metiers_history_v1";
 const CURRENT_PREFIX = "nino_metiers_week_";
+const FALLBACK_PHOTO = "assets/portraits/portrait_neutre.png";
+const PHOTO_VERSION = "022";
+
+function esc(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
+  }[c]));
+}
 
 function mondayOf(date = new Date()) {
   const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -159,6 +170,31 @@ function loadWeeklyDraw() {
   return { draw, monday };
 }
 
+function guessFilename(prenom) {
+  return `${prenom.replace(/\s+/g, "_")}.jpg`;
+}
+
+function studentManifestEntry(prenom) {
+  return MANIFEST_ELEVES.find(e => e.prenom === prenom) || null;
+}
+
+function studentPhotoUrl(prenom) {
+  const entry = studentManifestEntry(prenom);
+  const filename = entry?.fichier || guessFilename(prenom);
+  return encodeURI(`assets/eleves/${filename}`) + `?v=${PHOTO_VERSION}`;
+}
+
+function renderStudent(prenom) {
+  return `
+    <div class="assignment-student">
+      <span class="assignment-student-photo-wrap">
+        <img class="assignment-student-photo" src="${studentPhotoUrl(prenom)}" alt="Portrait de ${esc(prenom)}" loading="lazy" data-student="${esc(prenom)}">
+      </span>
+      <span class="assignment-student-name">${esc(prenom)}</span>
+    </div>
+  `;
+}
+
 const { draw, monday } = loadWeeklyDraw();
 
 document.querySelector("#week-note").textContent =
@@ -179,12 +215,20 @@ current.innerHTML = draw.assignments.map(a => {
         <span class="assignment-icon">${job.icon}</span>
         <span class="assignment-title">${job.name}</span>
       </div>
-      <div class="assignment-pair">
-        ${a.students.map(s => `<span class="pupil-chip">${s}</span>`).join("")}
+      <div class="assignment-students assignment-students--${a.students.length === 1 ? "single" : "pair"}">
+        ${a.students.map(renderStudent).join("")}
       </div>
     </article>
   `;
 }).join("");
+
+current.querySelectorAll('.assignment-student-photo').forEach(img => {
+  img.addEventListener('error', () => {
+    if (!img.src.includes('portrait_neutre.png')) {
+      img.src = FALLBACK_PHOTO;
+    }
+  }, { once: true });
+});
 
 const assignedByJob = Object.fromEntries(draw.assignments.map(a => [a.job,a.students]));
 const grid = document.querySelector("#jobs-grid");

@@ -1,10 +1,27 @@
-# Espace Enfants CE2 — V0.21
+# PATCH_ESPACE_ENFANTS_V0-22_MON_METIER_PHOTOS
 
-Modification :
-- suppression complète du bandeau supérieur de la page d'accueil ;
-- suppression du bloc avec Nino, « Notre espace à nous », « Notre classe CE2 »
-  et « Bonjour ! Moi, c’est Nino. Que veux-tu faire ? » ;
-- la page commence désormais directement par le bandeau d'entraide et les cartes.
+## Objet
+Correctif **V0.22** pour la page **Mon métier**.
 
-Fichier à remplacer :
-- `index.html`
+## Modifications
+- affichage **photo + prénom** directement dans chaque carte métier ;
+- conservation du tirage aléatoire hebdomadaire, des binômes et de la mémorisation ;
+- conservation du bouton **Voir tous les métiers** ;
+- ajout du chargement de `eleves-manifest.js` pour retrouver correctement les fichiers photos.
+
+## Fichiers à remplacer
+- `mon-metier.html`
+- `metiers.js`
+- `style.css`
+- `eleves-manifest.js`
+
+## Pré-requis
+Les photos élèves doivent déjà être présentes dans :
+- `assets/eleves/`
+
+Le portrait de secours reste :
+- `assets/portraits/portrait_neutre.png`
+
+## Version affichée
+- badge de page : **V0.22**
+- titre HTML : **Mon métier — Nino — V0.22**
