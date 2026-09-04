@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon métier — Nino — V0.25</title>
+  <title>Mon métier — Nino — V0.26</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="mon-metier-v025.css">
+  <link rel="stylesheet" href="mon-metier-v026.css">
 </head>
 <body>
   <main class="jobs-page">
@@ -27,7 +27,21 @@
         <h2>🎲 Répartition de la semaine</h2>
         <p id="draw-status">Nino prépare les métiers…</p>
       </div>
-      <button class="draw-button" id="show-all-jobs" type="button">📋 Voir les 12 métiers</button>
+      <div class="draw-actions">
+        <button class="draw-button draw-button-secondary" id="show-period-stats" type="button">📊 Répartition de la période</button>
+        <button class="draw-button" id="show-all-jobs" type="button">📋 Voir les 12 métiers</button>
+      </div>
+    </section>
+
+    <section class="period-stats-panel" id="period-stats-panel" hidden>
+      <div class="period-stats-head">
+        <div>
+          <h2>📊 Répartition des métiers — période en cours</h2>
+          <p id="period-stats-summary">Nino calcule la répartition…</p>
+        </div>
+        <button class="period-reset-button" id="period-reset-button" type="button">🔄 Nouvelle période</button>
+      </div>
+      <div class="period-stats-grid" id="period-stats-grid"></div>
     </section>
 
     <section class="current-jobs" id="current-jobs" aria-label="Métiers attribués cette semaine"></section>
@@ -40,10 +54,10 @@
       <div class="jobs-grid" id="jobs-grid"></div>
     </section>
 
-    <div class="version-badge">V0.25</div>
+    <div class="version-badge">V0.26</div>
   </main>
 
   <script src="eleves-manifest.js"></script>
-  <script src="metiers-v024.js"></script>
+  <script src="metiers-v026.js"></script>
 </body>
 </html>
