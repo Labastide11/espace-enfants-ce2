@@ -1,8 +1,8 @@
-// Espace Enfants CE2 — Entraide simplifiée — V0.14
+// Espace Enfants CE2 — Entraide simplifiée — V0.15
 
 const ELEVES = Array.isArray(window.NINO_ELEVES) ? window.NINO_ELEVES : [];
 const FALLBACK = "assets/portraits/portrait_neutre.png";
-const STORAGE_KEY = "nino_entraide_status_v014";
+const STORAGE_KEY = "nino_entraide_status_v015";
 
 const params = new URLSearchParams(window.location.search);
 const mode = params.get("mode") === "give" ? "give" : "need";
@@ -57,7 +57,7 @@ function esc(value) {
 }
 
 function photoUrl(filename) {
-  return encodeURI(`assets/eleves/${filename}`) + "?v=014";
+  return encodeURI(`assets/eleves/${filename}`) + "?v=015";
 }
 
 function visibleInMode(eleve) {
@@ -95,7 +95,7 @@ function render() {
     const state = getStatus(eleve.prenom);
     const helperClass = state === "helper" ? " is-helper" : "";
     const helperBadge = state === "helper"
-      ? '<span class="student-status status-helper">🟢 Disponible pour aider</span>'
+      ? '<span class="helper-photo-badge">✓ Je peux aider</span>'
       : "";
 
     return `
@@ -107,9 +107,9 @@ function render() {
                src="${photoUrl(eleve.fichier)}"
                alt="Portrait de ${esc(eleve.prenom)}"
                loading="lazy">
+          ${helperBadge}
         </span>
         <span class="student-firstname">${esc(eleve.prenom)}</span>
-        ${helperBadge}
       </button>
     `;
   }).join("");
@@ -126,6 +126,8 @@ function render() {
 
       // Parcours "Je peux aider" : clic direct = activation / désactivation.
       if (mode === "give") {
+        panel.hidden = true;
+        helpersPanel.hidden = true;
         const next = getStatus(prenom) === "helper" ? "neutral" : "helper";
         setStatus(prenom, next);
         return;

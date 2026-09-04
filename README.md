@@ -1,20 +1,10 @@
-# Espace Enfants CE2 — V0.14
+# Espace Enfants CE2 — V0.15
 
-## Simplification de « Je peux aider »
+Correction de « Je peux aider » :
+- suppression totale du bloc « Pourquoi peux-tu aider ? » ;
+- un clic sur la photo suffit ;
+- la carte devient verte avec un cadre vert ;
+- un badge vert « ✓ Je peux aider » apparaît directement sur la photo ;
+- un second clic annule la disponibilité.
 
-L’état « Je travaille » n’est plus affiché.
-
-Sur la page « Je peux aider » :
-- l’enfant clique directement sur sa photo ;
-- sa carte devient verte avec un cadre vert ;
-- le badge « 🟢 Disponible pour aider » apparaît sous son prénom ;
-- un second clic remet la carte à son état normal.
-
-La page « J’ai besoin d’aide » continue à masquer automatiquement les élèves disponibles pour aider.
-
-## Fichiers
-- `index.html`
-- `jaide.html`
-- `jaide.js`
-- `entraide-v014.css`
-- `eleves-manifest.js`
+La logique de « J’ai besoin d’aide » reste inchangée.
