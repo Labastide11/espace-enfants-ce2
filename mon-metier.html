@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon métier — Nino — V0.23</title>
+  <title>Mon métier — Nino — V0.24</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="mon-metier-v023.css">
+  <link rel="stylesheet" href="mon-metier-v024.css">
 </head>
 <body>
   <main class="jobs-page">
@@ -19,36 +19,32 @@
 
     <section class="jobs-intro">
       <h1>Mon métier</h1>
-      <p>Les métiers sont tirés au hasard et changent <strong>chaque lundi</strong>.</p>
+      <p>Les métiers changent <strong>chaque lundi</strong>.</p>
       <div class="week-note" id="week-note">🔄 Semaine en cours</div>
     </section>
 
     <section class="weekly-draw-card">
       <div>
-        <h2>🎲 Tirage de la semaine</h2>
-        <p id="draw-status">Nino prépare les binômes…</p>
+        <h2>🎲 Répartition de la semaine</h2>
+        <p id="draw-status">Nino prépare les métiers…</p>
       </div>
-      <button class="draw-button" id="show-all-jobs" type="button">📋 Voir tous les métiers</button>
+      <button class="draw-button" id="show-all-jobs" type="button">📋 Voir les 12 métiers</button>
     </section>
 
     <section class="current-jobs" id="current-jobs" aria-label="Métiers attribués cette semaine"></section>
 
     <section class="all-jobs-panel" id="all-jobs-panel" hidden>
       <h2>Les 12 métiers de la classe</h2>
-      <p class="all-jobs-note">Avec 15 élèves, Nino attribue cette semaine 7 métiers en binômes et 1 élève remplaçant. Les autres métiers reviennent dans les prochaines rotations.</p>
+      <p class="all-jobs-note">
+        Les 12 métiers sont attribués chaque semaine : 9 avec un élève et 3 en binôme.
+      </p>
       <div class="jobs-grid" id="jobs-grid"></div>
     </section>
 
-    <section class="job-detail" id="job-detail" hidden>
-      <h2 id="job-detail-title"></h2>
-      <p id="job-detail-text"></p>
-      <p class="job-rule" id="job-detail-rule"></p>
-    </section>
-
-    <div class="version-badge">V0.23</div>
+    <div class="version-badge">V0.24</div>
   </main>
 
   <script src="eleves-manifest.js"></script>
-  <script src="metiers-v023.js"></script>
+  <script src="metiers-v024.js"></script>
 </body>
 </html>

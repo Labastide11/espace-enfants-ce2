@@ -1,21 +1,38 @@
-# Espace Enfants CE2 — V0.23
+# Espace Enfants CE2 — V0.24 — Métiers équilibrés
 
-Correctif de chargement pour « Mon métier ».
+## Répartition
+Les 12 métiers sont maintenant attribués toutes les semaines :
+- 9 métiers avec 1 élève ;
+- 3 métiers avec 2 élèves ;
+- aucun métier vide.
 
-La capture montre encore l'ancien affichage avec les petites pastilles prénom :
-cela signifie que l'ancien `metiers.js` / ancien CSS est encore chargé.
+Les 3 métiers en binôme tournent d'une semaine à l'autre.
 
-Cette version utilise de nouveaux noms de fichiers afin de contourner le cache :
-- `metiers-v023.js`
-- `mon-metier-v023.css`
+## Anis et Rayan
+Anis et Rayan ne sont pas laissés seuls sur les métiers importants du matin :
+- Distributeur
+- Chef de rang
+- Animateur du Quoi de neuf
+- Écrivain
+- Gardien
 
-Résultat attendu :
-- photo de chaque élève directement dans la carte métier ;
-- prénom sous la photo ;
-- plus de petites pastilles avec l'icône 👤.
+S'ils reçoivent l'un de ces métiers, ils sont placés en binôme.
 
-Fichiers à copier :
+## Métiers modifiés
+- `Transporteur` devient `🧰 Responsable du matériel`
+- `Électricien` devient `🔐 Gardien`
+
+## Carte déroulante
+Un clic sur un métier déplie directement :
+- `Ce que je dois faire`
+- `⭐ À retenir`
+
+Un second clic referme la carte.
+
+## Fichiers à remplacer
 - `mon-metier.html`
-- `metiers-v023.js`
-- `mon-metier-v023.css`
+- `metiers-v024.js`
+- `mon-metier-v024.css`
 - `eleves-manifest.js`
+
+La V0.24 utilise une nouvelle clé de stockage locale pour forcer une nouvelle répartition de 12 métiers.
