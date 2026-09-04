@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Je ne sais pas quoi faire — Nino</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="autonomy-page">
+    <div class="autonomy-top">
+      <a class="back" href="index.html">← Accueil</a>
+      <div class="mini-nino">
+        <img src="assets/nino.png" alt="Nino le robot">
+        <span><strong>Nino est là pour t’aider.</strong></span>
+      </div>
+    </div>
+
+    <section class="autonomy-intro">
+      <h1>Je ne sais pas quoi faire</h1>
+      <p>Choisis ce qui ressemble le plus à ta situation.</p>
+    </section>
+
+    <section class="choice-grid" aria-label="Choisir ma situation">
+      <button class="choice-btn choice-unfinished" data-choice="unfinished">
+        ✅ Je n’ai pas fini mon travail
+        <small>Il me reste quelque chose à faire.</small>
+      </button>
+
+      <button class="choice-btn choice-check" data-choice="check">
+        🔎 J’ai fini, je vérifie
+        <small>Je veux être sûr que mon travail est prêt.</small>
+      </button>
+
+      <button class="choice-btn choice-done" data-choice="done">
+        📚 J’ai vraiment terminé
+        <small>Mon travail est fini et vérifié.</small>
+      </button>
+
+      <button class="choice-btn choice-stuck" data-choice="stuck">
+        🤝 Je suis bloqué
+        <small>Je n’arrive pas à continuer seul.</small>
+      </button>
+    </section>
+
+    <section class="nino-answer" id="nino-answer" hidden>
+      <h2 id="answer-title"></h2>
+      <div class="action-list" id="action-list"></div>
+      <button class="restart" id="restart">← Choisir une autre situation</button>
+    </section>
+  </main>
+
+  <script src="autonomie.js"></script>
+</body>
+</html>

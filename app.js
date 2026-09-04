@@ -1,13 +1,11 @@
-const message = document.querySelector("#message");
-
-const labels = {
-  help: "🤝 J’aide sera construit après les premières étapes.",
-  choice: "🧭 « Je ne sais pas quoi faire » sera la première rubrique que nous construirons.",
-  jobs: "🧹 « Mon métier » viendra ensuite avec la rotation du lundi."
-};
-
 document.querySelectorAll("[data-action]").forEach((button) => {
   button.addEventListener("click", () => {
-    message.textContent = labels[button.dataset.action];
+    const action = button.dataset.action;
+    if (action === "help") {
+      alert("🤝 J’aide arrive bientôt.");
+    }
+    if (action === "jobs") {
+      alert("🧹 Mon métier arrive bientôt.");
+    }
   });
 });
