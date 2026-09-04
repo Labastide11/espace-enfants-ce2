@@ -1,8 +1,8 @@
-// Espace Enfants CE2 — Entraide simplifiée — V0.15
+// Espace Enfants CE2 — Entraide simplifiée — V0.16
 
 const ELEVES = Array.isArray(window.NINO_ELEVES) ? window.NINO_ELEVES : [];
 const FALLBACK = "assets/portraits/portrait_neutre.png";
-const STORAGE_KEY = "nino_entraide_status_v015";
+const STORAGE_KEY = "nino_entraide_status_v016";
 
 const params = new URLSearchParams(window.location.search);
 const mode = params.get("mode") === "give" ? "give" : "need";
@@ -57,7 +57,7 @@ function esc(value) {
 }
 
 function photoUrl(filename) {
-  return encodeURI(`assets/eleves/${filename}`) + "?v=015";
+  return encodeURI(`assets/eleves/${filename}`) + "?v=016";
 }
 
 function visibleInMode(eleve) {
