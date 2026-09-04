@@ -1,0 +1,148 @@
+/* Espace Enfants CE2 — V0.14
+   Je peux aider : clic direct, carte verte. */
+
+.student-card {
+  transition:
+    transform .15s ease,
+    box-shadow .15s ease,
+    background .15s ease,
+    border-color .15s ease;
+  border: 4px solid transparent;
+}
+
+.student-card.is-helper {
+  background: #e7f8ec;
+  border-color: #35ad64;
+  box-shadow:
+    0 0 0 5px rgba(53,173,100,.16),
+    0 12px 24px rgba(38,110,68,.13);
+}
+
+.student-card.is-helper .student-photo-wrap {
+  box-shadow: 0 0 0 4px #35ad64;
+}
+
+.student-status {
+  display: block;
+  margin-top: 7px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: .78rem;
+  line-height: 1.15;
+  font-weight: 900;
+}
+
+.status-helper {
+  background: #d8f4e0;
+  color: #176d37;
+}
+
+.help-panel,
+.helpers-panel {
+  margin-top: 24px;
+  padding: 22px;
+  border-radius: 26px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 12px 30px rgba(41,89,120,.13);
+  text-align: center;
+}
+
+.help-panel h2,
+.helpers-panel h2 {
+  margin-top: 0;
+  color: #124b78;
+}
+
+.question {
+  font-size: 1.2rem;
+}
+
+.big-action {
+  min-height: 86px;
+  border: 0;
+  border-radius: 22px;
+  padding: 14px 18px;
+  font: inherit;
+  font-weight: 900;
+  font-size: 1.08rem;
+  cursor: pointer;
+  box-shadow: 0 8px 0 rgba(39,76,99,.08);
+}
+
+.need-btn {
+  background: #fff0d9;
+  color: #96530b;
+}
+
+.neutral-btn {
+  background: #eef2f5;
+  color: #4d6170;
+}
+
+.nino-message {
+  margin: 10px 0 18px;
+  padding: 15px;
+  border-radius: 18px;
+  font-size: 1.08rem;
+}
+
+.nino-message.need {
+  background: #fff4e5;
+}
+
+.secondary-action {
+  margin-top: 18px;
+  border: 0;
+  background: transparent;
+  color: #376b89;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.helpers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.helper-card {
+  border: 0;
+  border-radius: 20px;
+  padding: 12px;
+  background: #e9faee;
+  color: #176d37;
+  cursor: pointer;
+  font: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.helper-card img {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.helper-card strong {
+  font-size: 1.05rem;
+}
+
+.helper-card span {
+  font-size: .8rem;
+  font-weight: 900;
+}
+
+.no-helper,
+.chosen-helper {
+  grid-column: 1 / -1;
+  padding: 20px;
+  border-radius: 18px;
+  background: #f4f8fb;
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
