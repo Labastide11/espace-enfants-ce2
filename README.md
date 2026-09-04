@@ -1,15 +1,8 @@
 # Espace Enfants CE2 — Nino
 
 ## Version actuelle
-**V0.4**
+**V0.5**
 
-## Nouveauté V0.4 — J'aide
-- ajout d'une vraie page **J'aide**
-- trombinoscope **prénom + portrait**
-- 20 portraits repris du dossier `assets/photos-eleves/` de Progressions CE2
-- sélection de l'élève par simple clic
-- choix suivant : **Je peux aider** / **J'ai besoin d'aide**
-- portrait neutre de secours si une image est absente
 
 ## Déjà fonctionnel
 - 🧭 Je ne sais pas quoi faire
@@ -19,3 +12,8 @@
 Construire les deux parcours de J'aide sans texte obligatoire :
 1. proposer son aide ;
 2. demander de l'aide et choisir un camarade aidant.
+
+## Nouveauté V0.5
+- trombinoscope remplacé par les photos à jour 2026-2027
+- 15 élèves actuellement présents dans le dossier fourni
+- ancienne liste de portraits supprimée du trombinoscope

@@ -1,28 +1,22 @@
-// Espace Enfants CE2 — J'aide — V0.4
-// Trombinoscope repris des portraits présents dans Progressions CE2.
-// Une image neutre est utilisée automatiquement si un portrait ne se charge pas.
+// Espace Enfants CE2 — J'aide — V0.5
+// Trombinoscope mis à jour avec les photos 2026-2027 fournies par l'enseignant.
 
 const ELEVES = [
-  { prenom: 'Aaron', photo: "assets/eleves/aaron.jpg" },
-  { prenom: 'Adam', photo: "assets/eleves/adam.jpg" },
-  { prenom: 'Akshiga', photo: "assets/eleves/akshiga.jpg" },
-  { prenom: 'Amine', photo: "assets/eleves/amine.jpg" },
-  { prenom: 'Anissa', photo: "assets/eleves/anissa.jpg" },
-  { prenom: 'Badr', photo: "assets/eleves/badr.jpg" },
-  { prenom: 'Boy', photo: "assets/eleves/boy.jpg" },
-  { prenom: 'Chris-Yoan', photo: "assets/eleves/chris-yoan.jpg" },
-  { prenom: 'Eléa', photo: "assets/eleves/elea.jpg" },
-  { prenom: 'Hiba', photo: "assets/eleves/hiba.jpg" },
-  { prenom: 'Ibrahim', photo: "assets/eleves/ibrahim.jpg" },
-  { prenom: 'Mélanie', photo: "assets/eleves/melanie.jpg" },
-  { prenom: 'Neyla', photo: "assets/eleves/neyla.jpg" },
-  { prenom: 'Nordine', photo: "assets/eleves/nordine.jpg" },
-  { prenom: 'Rofrane', photo: "assets/eleves/rofrane.jpg" },
-  { prenom: 'Sara', photo: "assets/eleves/sara.jpg" },
-  { prenom: 'Stéfanie', photo: "assets/eleves/stefanie.jpg" },
-  { prenom: 'Tiffany', photo: "assets/eleves/tiffany.jpg" },
-  { prenom: 'Youssef', photo: "assets/eleves/youssef.jpg" },
-  { prenom: 'Zoé', photo: "assets/eleves/zoe.jpg" }
+  { prenom: 'Anis', photo: "assets/eleves/anis.jpg" },
+  { prenom: 'Assya', photo: "assets/eleves/assya.jpg" },
+  { prenom: 'Bilal', photo: "assets/eleves/bilal.jpg" },
+  { prenom: 'Espoir', photo: "assets/eleves/espoir.jpg" },
+  { prenom: 'Fahd', photo: "assets/eleves/fahd.jpg" },
+  { prenom: 'Hamza', photo: "assets/eleves/hamza.jpg" },
+  { prenom: 'Jinene', photo: "assets/eleves/jinene.jpg" },
+  { prenom: 'Khadidja', photo: "assets/eleves/khadidja.jpg" },
+  { prenom: 'Mohamed  S', photo: "assets/eleves/mohamed-s.jpg" },
+  { prenom: 'Mohamed Z', photo: "assets/eleves/mohamed-z.jpg" },
+  { prenom: 'Rayan', photo: "assets/eleves/rayan.jpg" },
+  { prenom: 'Sayf', photo: "assets/eleves/sayf.jpg" },
+  { prenom: 'Yaman', photo: "assets/eleves/yaman.jpg" },
+  { prenom: 'Yazdan', photo: "assets/eleves/yazdan.jpg" },
+  { prenom: 'Younis', photo: "assets/eleves/younis.jpg" }
 ];
 
 const FALLBACK = "assets/portraits/portrait_neutre.png";
