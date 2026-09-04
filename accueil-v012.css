@@ -1,0 +1,23 @@
+/* Espace Enfants CE2 — V0.12
+   Accueil : 4 cartes sur 2 lignes. */
+
+.cards-home-v012 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cards-home-v012 .image-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 760px) {
+  .cards-home-v012 {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-home-v012 .image-card img {
+    aspect-ratio: 16 / 10;
+  }
+}

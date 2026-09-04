@@ -1,23 +1,31 @@
-# Espace Enfants CE2 — V0.11 corrective
+# Espace Enfants CE2 — Patch V0.12
 
-## Correction du trombinoscope
-- Anis réintégré
-- Assya réintégrée
-- Mohamed S utilise le fichier `Mohamed_S.jpg`
-- Mohamed Z utilise le fichier `Mohamed_Z.jpg`
-- la liste est générée à partir des photos réellement intégrées
+## Accueil
+La page d'accueil passe à 4 cartes en grille 2 × 2 :
 
-## Élèves présents (15)
-Anis, Assya, Bilal, Espoir, Fahd, Hamza, Jinene, Khadidja, Mohamed S, Mohamed Z, Rayan, Sayf, Yaman, Yazdan, Younis
+Première ligne :
+- Je peux aider
+- J’ai besoin d’aide
 
-## Fichiers à remplacer / ajouter
+Deuxième ligne :
+- Je ne sais pas quoi faire
+- Mon métier
+
+Les deux nouvelles images fournies sont utilisées directement.
+
+## Navigation
+- `Je peux aider` ouvre `jaide.html?mode=give`
+- `J’ai besoin d’aide` ouvre `jaide.html?mode=need`
+
+Après avoir choisi son portrait, l'enfant arrive directement dans le bon parcours :
+il n'a plus à choisir une seconde fois entre aider et demander de l'aide.
+
+## Fichiers du patch
+- `index.html`
+- `accueil-v012.css`
 - `jaide.html`
 - `jaide.js`
-- `eleves-manifest.js`
-- dossier `assets/eleves/`
+- `assets/je-peux-aider.png`
+- `assets/jai-besoin-aide.png`
 
-## À supprimer si présents
-- `Mohamed  S.jpg`
-- `Mohamed Z.jpg`
-- `mohamed-s.jpg`
-- `mohamed-z.jpg`
+Le fichier `style.css` n'est pas remplacé afin de conserver les modifications déjà faites dans les versions précédentes.

@@ -1,13 +1,36 @@
-// Espace Enfants CE2 — J'aide — V0.11
+// Espace Enfants CE2 — Entraide — V0.12
+// L'accueil distingue désormais directement :
+//   ?mode=give -> Je peux aider
+//   ?mode=need -> J'ai besoin d'aide
 
 const ELEVES = Array.isArray(window.NINO_ELEVES) ? window.NINO_ELEVES : [];
 const FALLBACK = "assets/portraits/portrait_neutre.png";
 
+const params = new URLSearchParams(window.location.search);
+const requestedMode = ["give", "need"].includes(params.get("mode"))
+  ? params.get("mode")
+  : "";
+
 const grid = document.querySelector("#student-grid");
 const choice = document.querySelector("#help-choice");
 const choiceTitle = document.querySelector("#help-choice-title");
+const choiceActions = document.querySelector("#help-choice-actions");
 const note = document.querySelector("#help-note");
+const pageTitle = document.querySelector("#help-page-title");
+const pageIntro = document.querySelector("#help-page-intro");
+
 let selectedStudent = "";
+
+if (requestedMode === "give") {
+  pageTitle.textContent = "Je peux aider";
+  pageIntro.innerHTML = "<strong>Choisis ton prénom.</strong><br>Puis Nino te demandera pour quoi tu peux aider.";
+} else if (requestedMode === "need") {
+  pageTitle.textContent = "J’ai besoin d’aide";
+  pageIntro.innerHTML = "<strong>Choisis ton prénom.</strong><br>Puis Nino t’aidera à trouver un camarade.";
+} else {
+  pageTitle.textContent = "Entraide";
+  pageIntro.innerHTML = "<strong>Commence par choisir ton prénom.</strong>";
+}
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>"']/g, c => ({
@@ -16,7 +39,7 @@ function esc(value) {
 }
 
 function photoUrl(filename) {
-  return encodeURI(`assets/eleves/${filename}`) + "?v=011";
+  return encodeURI(`assets/eleves/${filename}`) + "?v=012";
 }
 
 grid.innerHTML = ELEVES.map((eleve, index) => `
@@ -33,10 +56,23 @@ grid.innerHTML = ELEVES.map((eleve, index) => `
 
 grid.querySelectorAll(".student-photo").forEach(img => {
   img.addEventListener("error", () => {
-    console.warn("Portrait introuvable :", img.getAttribute("src"));
     if (!img.src.includes("portrait_neutre.png")) img.src = FALLBACK;
   }, { once: true });
 });
+
+function showMode(mode) {
+  choice.hidden = false;
+
+  if (mode === "give") {
+    choiceTitle.textContent = `${selectedStudent}, tu peux aider !`;
+    note.textContent = "🤝 Indique maintenant pour quoi tu peux aider.";
+  } else {
+    choiceTitle.textContent = `${selectedStudent}, tu as besoin d’aide.`;
+    note.textContent = "🙋 Nino va t’aider à trouver un camarade.";
+  }
+
+  choice.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
 
 grid.querySelectorAll("[data-student-index]").forEach(button => {
   button.addEventListener("click", () => {
@@ -46,19 +82,22 @@ grid.querySelectorAll("[data-student-index]").forEach(button => {
     const eleve = ELEVES[Number(button.dataset.studentIndex)];
     selectedStudent = eleve.prenom;
 
-    choiceTitle.textContent = `Bonjour ${selectedStudent} ! Que veux-tu faire ?`;
-    note.textContent = "Choisis une des deux possibilités.";
-    choice.hidden = false;
-    choice.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    if (requestedMode) {
+      choiceActions.hidden = true;
+      showMode(requestedMode);
+    } else {
+      choiceActions.hidden = false;
+      choiceTitle.textContent = `Bonjour ${selectedStudent} ! Que veux-tu faire ?`;
+      note.textContent = "Choisis une des deux possibilités.";
+      choice.hidden = false;
+      choice.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
   });
 });
 
 document.querySelectorAll("[data-help-mode]").forEach(button => {
   button.addEventListener("click", () => {
     if (!selectedStudent) return;
-
-    note.textContent = button.dataset.helpMode === "give"
-      ? `🤝 ${selectedStudent}, tu vas pouvoir indiquer ce pour quoi tu peux aider.`
-      : `🙋 ${selectedStudent}, Nino va t’aider à trouver un camarade.`;
+    showMode(button.dataset.helpMode);
   });
 });

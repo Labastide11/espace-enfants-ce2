@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notre classe CE2 — Nino — V0.9</title>
+  <title>Notre classe CE2 — Nino — V0.12</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="accueil-v012.css">
 </head>
 <body>
   <main class="app">
@@ -19,9 +20,13 @@
       </div>
     </header>
 
-    <section class="cards" aria-label="Choisir une rubrique">
-      <a class="card image-card" href="jaide.html" aria-label="J’aide">
-        <img src="assets/jaide.png" alt="J’aide">
+    <section class="cards cards-home-v012" aria-label="Choisir une rubrique">
+      <a class="card image-card" href="jaide.html?mode=give" aria-label="Je peux aider">
+        <img src="assets/je-peux-aider.png" alt="Je peux aider">
+      </a>
+
+      <a class="card image-card" href="jaide.html?mode=need" aria-label="J’ai besoin d’aide">
+        <img src="assets/jai-besoin-aide.png" alt="J’ai besoin d’aide">
       </a>
 
       <a class="card image-card" href="je-ne-sais-pas-quoi-faire.html" aria-label="Je ne sais pas quoi faire">
@@ -33,7 +38,7 @@
       </a>
     </section>
 
-    <div class="version-badge">V0.9</div>
+    <div class="version-badge">V0.12</div>
   </main>
 
   <script src="app.js"></script>
