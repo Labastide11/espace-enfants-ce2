@@ -9,8 +9,10 @@
 <body>
   <main class="app">
     <header class="hero">
-      <div class="nino" aria-hidden="true">🤖</div>
-      <div>
+      <div class="nino-wrap">
+        <img class="nino-img" src="assets/nino.png" alt="Nino le robot">
+      </div>
+      <div class="hero-text">
         <p class="eyebrow">Notre espace à nous</p>
         <h1>Notre classe CE2</h1>
         <p class="hello">Bonjour ! Moi, c’est <strong>Nino</strong>.<br>Que veux-tu faire ?</p>
@@ -18,22 +20,16 @@
     </header>
 
     <section class="cards" aria-label="Choisir une rubrique">
-      <button class="card card-help" data-action="help">
-        <span class="icon">🤝</span>
-        <span class="title">J’aide</span>
-        <span class="subtitle">J’aide un camarade ou je cherche de l’aide.</span>
+      <button class="card image-card" data-action="help" aria-label="J’aide">
+        <img src="assets/jaide.png" alt="J’aide">
       </button>
 
-      <button class="card card-choice" data-action="choice">
-        <span class="icon">🧭</span>
-        <span class="title">Je ne sais pas quoi faire</span>
-        <span class="subtitle">Nino m’aide à choisir.</span>
+      <button class="card image-card" data-action="choice" aria-label="Je ne sais pas quoi faire">
+        <img src="assets/je-ne-sais-pas-quoi-faire.png" alt="Je ne sais pas quoi faire">
       </button>
 
-      <button class="card card-jobs" data-action="jobs">
-        <span class="icon">🧹</span>
-        <span class="title">Mes responsabilités</span>
-        <span class="subtitle">Je regarde ma mission de la semaine.</span>
+      <button class="card image-card" data-action="jobs" aria-label="Mon métier">
+        <img src="assets/mon-metier.png" alt="Mon métier">
       </button>
     </section>
 
