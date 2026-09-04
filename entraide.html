@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entraide avec Nino — V0.18</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="entraide-v018.css">
+</head>
+<body>
+  <main class="entraide-page">
+    <div class="entraide-topbar">
+      <a class="back" href="index.html">← Accueil</a>
+      <span class="mini-title">🤖 Entraide avec Nino</span>
+    </div>
+
+    <img class="entraide-page-banner"
+         src="assets/bandeau-entraide.png"
+         alt="Entraide avec Nino">
+
+    <p class="entraide-instruction">
+      Clique sur ta photo pour changer de colonne.
+    </p>
+
+    <section class="entraide-board" aria-label="Tableau d'entraide de la classe">
+      <section class="entraide-column column-work">
+        <header>
+          <h2>📘 Je travaille</h2>
+          <p>Je me concentre sur mon travail.</p>
+        </header>
+        <div class="student-column-grid" id="work-list"></div>
+      </section>
+
+      <section class="entraide-column column-help">
+        <header>
+          <h2>🤝 Je peux aider</h2>
+          <p>Je suis disponible pour aider un camarade.</p>
+        </header>
+        <div class="student-column-grid" id="help-list"></div>
+      </section>
+
+      <section class="entraide-column column-need">
+        <header>
+          <h2>🙋 J’ai besoin d’aide</h2>
+          <p>Je suis bloqué et je cherche un coup de pouce.</p>
+        </header>
+        <div class="student-column-grid" id="need-list"></div>
+      </section>
+    </section>
+
+    <div class="choice-popover" id="choice-popover" hidden aria-live="polite">
+      <div class="choice-card">
+        <button class="choice-close" id="choice-close" type="button" aria-label="Fermer">×</button>
+        <div class="choice-student" id="choice-student"></div>
+        <p>Où veux-tu aller ?</p>
+        <div class="choice-buttons">
+          <button type="button" data-state="neutral">📘 Je travaille</button>
+          <button type="button" data-state="helper">🤝 Je peux aider</button>
+          <button type="button" data-state="need">🙋 J’ai besoin d’aide</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="version-badge">V0.18</div>
+  </main>
+
+  <script src="eleves-manifest.js"></script>
+  <script src="entraide-v018.js"></script>
+</body>
+</html>
