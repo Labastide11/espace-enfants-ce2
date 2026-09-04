@@ -1,5 +1,5 @@
-// Espace Enfants CE2 — J'aide — V0.5
-// Trombinoscope mis à jour avec les photos 2026-2027 fournies par l'enseignant.
+// Espace Enfants CE2 — J'aide — V0.7
+// Photos 2026-2027 réencodées en JPEG standard pour GitHub Pages.
 
 const ELEVES = [
   { prenom: 'Anis', photo: "assets/eleves/anis.jpg" },
@@ -35,7 +35,10 @@ function esc(value) {
 grid.innerHTML = ELEVES.map((eleve, index) => `
   <button class="student-card" type="button" data-student-index="${index}" aria-label="Choisir ${esc(eleve.prenom)}">
     <span class="student-photo-wrap">
-      <img class="student-photo" src="${eleve.photo}" alt="Portrait de ${esc(eleve.prenom)}" loading="lazy">
+      <img class="student-photo"
+           src="${eleve.photo}?v=07"
+           alt="Portrait de ${esc(eleve.prenom)}"
+           loading="lazy">
     </span>
     <span class="student-firstname">${esc(eleve.prenom)}</span>
   </button>
@@ -43,9 +46,9 @@ grid.innerHTML = ELEVES.map((eleve, index) => `
 
 grid.querySelectorAll(".student-photo").forEach(img => {
   img.addEventListener("error", () => {
-    if (img.src.endsWith(FALLBACK)) return;
-    img.src = FALLBACK;
-  }, { once: true });
+    console.warn("Portrait introuvable :", img.getAttribute("src"));
+    if (!img.src.includes("portrait_neutre.png")) img.src = FALLBACK;
+  }, { once:true });
 });
 
 grid.querySelectorAll("[data-student-index]").forEach(button => {
@@ -57,7 +60,7 @@ grid.querySelectorAll("[data-student-index]").forEach(button => {
     choiceTitle.textContent = `Bonjour ${selectedStudent} ! Que veux-tu faire ?`;
     note.textContent = "Choisis une des deux possibilités.";
     choice.hidden = false;
-    choice.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    choice.scrollIntoView({ behavior:"smooth", block:"nearest" });
   });
 });
 

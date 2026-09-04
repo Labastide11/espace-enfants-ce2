@@ -450,7 +450,7 @@ h1 {
 }
 
 
-/* V0.6 — J'aide : trombinoscope */
+/* V0.7 — J'aide : trombinoscope */
 .help-page {
   width: min(1180px, 95vw);
   margin: 0 auto;
@@ -588,7 +588,7 @@ h1 {
 }
 
 
-/* V0.6 — tirage hebdomadaire des métiers */
+/* V0.7 — tirage hebdomadaire des métiers */
 .weekly-draw-card {
   margin-top: 20px;
   background: linear-gradient(145deg, #fff8c9, #fff);
