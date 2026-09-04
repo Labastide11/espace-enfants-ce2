@@ -1,27 +1,21 @@
-# PATCH_ESPACE_ENFANTS_V0-22_MON_METIER_PHOTOS
+# Espace Enfants CE2 — V0.23
 
-## Objet
-Correctif **V0.22** pour la page **Mon métier**.
+Correctif de chargement pour « Mon métier ».
 
-## Modifications
-- affichage **photo + prénom** directement dans chaque carte métier ;
-- conservation du tirage aléatoire hebdomadaire, des binômes et de la mémorisation ;
-- conservation du bouton **Voir tous les métiers** ;
-- ajout du chargement de `eleves-manifest.js` pour retrouver correctement les fichiers photos.
+La capture montre encore l'ancien affichage avec les petites pastilles prénom :
+cela signifie que l'ancien `metiers.js` / ancien CSS est encore chargé.
 
-## Fichiers à remplacer
+Cette version utilise de nouveaux noms de fichiers afin de contourner le cache :
+- `metiers-v023.js`
+- `mon-metier-v023.css`
+
+Résultat attendu :
+- photo de chaque élève directement dans la carte métier ;
+- prénom sous la photo ;
+- plus de petites pastilles avec l'icône 👤.
+
+Fichiers à copier :
 - `mon-metier.html`
-- `metiers.js`
-- `style.css`
+- `metiers-v023.js`
+- `mon-metier-v023.css`
 - `eleves-manifest.js`
-
-## Pré-requis
-Les photos élèves doivent déjà être présentes dans :
-- `assets/eleves/`
-
-Le portrait de secours reste :
-- `assets/portraits/portrait_neutre.png`
-
-## Version affichée
-- badge de page : **V0.22**
-- titre HTML : **Mon métier — Nino — V0.22**
