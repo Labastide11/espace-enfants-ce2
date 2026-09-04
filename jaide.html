@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>J’aide — Nino — V0.7</title>
+  <title>J’aide — Nino — V0.9</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,7 +18,8 @@
 
     <section class="help-intro">
       <h1>J’aide</h1>
-      <p><strong>Commence par choisir ton prénom.</strong><br>Ensuite, Nino te demandera si tu veux aider ou si tu as besoin d’aide.</p>
+      <p><strong>Commence par choisir ton prénom.</strong><br>
+      Ensuite, Nino te demandera si tu veux aider ou si tu as besoin d’aide.</p>
     </section>
 
     <section class="student-grid" id="student-grid" aria-label="Choisir mon prénom"></section>
@@ -29,12 +30,13 @@
         <button class="help-choice-btn help-choice-btn--give" type="button" data-help-mode="give">🤝 Je peux aider</button>
         <button class="help-choice-btn help-choice-btn--need" type="button" data-help-mode="need">🙋 J’ai besoin d’aide</button>
       </div>
-      <p class="help-note" id="help-note">La suite de ces deux parcours sera construite à l’étape suivante.</p>
+      <p class="help-note" id="help-note">Choisis une des deux possibilités.</p>
     </section>
 
-    <div class="version-badge">V0.7</div>
+    <div class="version-badge">V0.9</div>
   </main>
 
+  <script src="eleves-manifest.js"></script>
   <script src="jaide.js"></script>
 </body>
 </html>

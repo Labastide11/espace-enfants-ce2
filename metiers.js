@@ -1,4 +1,4 @@
-// Espace Enfants CE2 — Mon métier — V0.7
+// Espace Enfants CE2 — Mon métier — V0.9
 // Tirage automatique hebdomadaire, binômes et mémorisation locale.
 
 const STUDENTS = [

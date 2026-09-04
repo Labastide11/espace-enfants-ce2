@@ -1,25 +1,9 @@
-// Espace Enfants CE2 — J'aide — V0.7
-// Photos 2026-2027 réencodées en JPEG standard pour GitHub Pages.
+// Espace Enfants CE2 — J'aide — V0.9
+// Le trombinoscope utilise uniquement le manifeste généré depuis assets/eleves/.
 
-const ELEVES = [
-  { prenom: 'Anis', photo: "assets/eleves/anis.jpg" },
-  { prenom: 'Assya', photo: "assets/eleves/assya.jpg" },
-  { prenom: 'Bilal', photo: "assets/eleves/bilal.jpg" },
-  { prenom: 'Espoir', photo: "assets/eleves/espoir.jpg" },
-  { prenom: 'Fahd', photo: "assets/eleves/fahd.jpg" },
-  { prenom: 'Hamza', photo: "assets/eleves/hamza.jpg" },
-  { prenom: 'Jinene', photo: "assets/eleves/jinene.jpg" },
-  { prenom: 'Khadidja', photo: "assets/eleves/khadidja.jpg" },
-  { prenom: 'Mohamed  S', photo: "assets/eleves/mohamed-s.jpg" },
-  { prenom: 'Mohamed Z', photo: "assets/eleves/mohamed-z.jpg" },
-  { prenom: 'Rayan', photo: "assets/eleves/rayan.jpg" },
-  { prenom: 'Sayf', photo: "assets/eleves/sayf.jpg" },
-  { prenom: 'Yaman', photo: "assets/eleves/yaman.jpg" },
-  { prenom: 'Yazdan', photo: "assets/eleves/yazdan.jpg" },
-  { prenom: 'Younis', photo: "assets/eleves/younis.jpg" }
-];
-
+const ELEVES = Array.isArray(window.NINO_ELEVES) ? window.NINO_ELEVES : [];
 const FALLBACK = "assets/portraits/portrait_neutre.png";
+
 const grid = document.querySelector("#student-grid");
 const choice = document.querySelector("#help-choice");
 const choiceTitle = document.querySelector("#help-choice-title");
@@ -32,17 +16,26 @@ function esc(value) {
   }[c]));
 }
 
-grid.innerHTML = ELEVES.map((eleve, index) => `
-  <button class="student-card" type="button" data-student-index="${index}" aria-label="Choisir ${esc(eleve.prenom)}">
-    <span class="student-photo-wrap">
-      <img class="student-photo"
-           src="${eleve.photo}?v=07"
-           alt="Portrait de ${esc(eleve.prenom)}"
-           loading="lazy">
-    </span>
-    <span class="student-firstname">${esc(eleve.prenom)}</span>
-  </button>
-`).join("");
+function photoUrl(filename) {
+  // encodeURI keeps the exact filename logic while safely encoding spaces for the browser.
+  return encodeURI(`assets/eleves/${filename}`) + "?v=09";
+}
+
+if (!ELEVES.length) {
+  grid.innerHTML = '<p class="help-note">Aucun portrait trouvé.</p>';
+} else {
+  grid.innerHTML = ELEVES.map((eleve, index) => `
+    <button class="student-card" type="button" data-student-index="${index}" aria-label="Choisir ${esc(eleve.prenom)}">
+      <span class="student-photo-wrap">
+        <img class="student-photo"
+             src="${photoUrl(eleve.fichier)}"
+             alt="Portrait de ${esc(eleve.prenom)}"
+             loading="lazy">
+      </span>
+      <span class="student-firstname">${esc(eleve.prenom)}</span>
+    </button>
+  `).join("");
+}
 
 grid.querySelectorAll(".student-photo").forEach(img => {
   img.addEventListener("error", () => {
@@ -68,7 +61,7 @@ document.querySelectorAll("[data-help-mode]").forEach(button => {
   button.addEventListener("click", () => {
     if (!selectedStudent) return;
     note.textContent = button.dataset.helpMode === "give"
-      ? `🤝 ${selectedStudent}, bientôt tu pourras indiquer ce pour quoi tu peux aider.`
-      : `🙋 ${selectedStudent}, bientôt Nino t’aidera à trouver un camarade.`;
+      ? `🤝 ${selectedStudent}, tu vas pouvoir indiquer ce pour quoi tu peux aider.`
+      : `🙋 ${selectedStudent}, Nino va t’aider à trouver un camarade.`;
   });
 });

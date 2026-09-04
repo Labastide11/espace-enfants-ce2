@@ -1,29 +1,36 @@
-# PATCH_ESPACE_ENFANTS_V0-8_CARTES_AUTONOMIE
+# Espace Enfants CE2 — Nino
 
-## Version
-V0.8
+## Version actuelle
+**V0.9**
 
-## Contenu du patch
-Ce patch améliore la page **« Je ne sais pas quoi faire »**.
+## Correction V0.9 — trombinoscope
+La liste n’est plus écrite à la main dans `jaide.js`.
 
-### Modifications
-- cartes plus grandes et plus visuelles ;
-- titres simplifiés pour les CE2 ;
-- grosses icônes bien repérables ;
-- texte plus court et plus concret ;
-- bouton **« Choisir »** dans chaque carte ;
-- réponse de Nino conservée après le clic ;
-- badge de version mis à jour en **V0.8**.
+Le fichier `eleves-manifest.js` a été généré directement à partir des fichiers réellement présents dans `assets/eleves/`.
 
-## Fichiers à remplacer
-- `je-ne-sais-pas-quoi-faire.html`
-- `autonomie.js`
-- `style.css`
+### Élèves présents dans cette V0.9
+Bilal, Espoir, Fahd, Hamza, Jinene, Khadidja, Mohamed  S, Mohamed Z, Rayan, Sayf, Yaman, Yazdan, Younis
 
-## Installation
-1. Ouvrir le dossier local du dépôt `espace-enfants-ce2`.
-2. Copier-coller les 3 fichiers du patch.
-3. Accepter le remplacement.
-4. Dans GitHub Desktop : **Commit to main**.
-5. Puis cliquer sur **Push origin**.
-6. Recharger le site avec **Ctrl + F5**.
+### Élèves retirés
+- Anis
+- Assya
+
+### Important : fichiers à supprimer du dépôt
+Avant le commit, supprime manuellement dans `assets/eleves/` les anciens fichiers qui resteraient encore :
+- `anis.jpg`
+- `assya.jpg`
+- `mohamed-s.jpg`
+- `mohamed-z.jpg`
+
+La V0.9 utilise les noms d’origine :
+- `Mohamed  S.jpg`
+- `Mohamed Z.jpg`
+
+Ainsi, il n’y a plus de doublon de noms pour Mohamed.
+
+## Fichiers nouveaux / remplacés
+- `jaide.html`
+- `jaide.js`
+- `eleves-manifest.js`
+- `assets/eleves/` (photos courantes)
+- `README.md`
