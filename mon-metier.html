@@ -3,24 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon métier — Nino — V0.24</title>
+  <title>Mon métier — Nino — V0.25</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="mon-metier-v024.css">
+  <link rel="stylesheet" href="mon-metier-v025.css">
 </head>
 <body>
   <main class="jobs-page">
-    <div class="autonomy-top">
-      <a class="back" href="index.html">← Accueil</a>
-      <div class="mini-nino">
-        <img src="assets/nino.png" alt="Nino le robot">
-        <span><strong>Nino organise les métiers de la semaine.</strong></span>
-      </div>
-    </div>
+    <section class="jobs-compact-header">
+      <a class="back jobs-compact-back" href="index.html">← Accueil</a>
 
-    <section class="jobs-intro">
-      <h1>Mon métier</h1>
-      <p>Les métiers changent <strong>chaque lundi</strong>.</p>
-      <div class="week-note" id="week-note">🔄 Semaine en cours</div>
+      <div class="jobs-compact-main">
+        <img class="jobs-compact-nino" src="assets/nino.png" alt="Nino le robot">
+        <div class="jobs-compact-text">
+          <h1>Mon métier</h1>
+          <p>Les métiers changent <strong>chaque lundi</strong>.</p>
+          <div class="week-note" id="week-note">🔄 Semaine en cours</div>
+        </div>
+      </div>
     </section>
 
     <section class="weekly-draw-card">
@@ -41,7 +40,7 @@
       <div class="jobs-grid" id="jobs-grid"></div>
     </section>
 
-    <div class="version-badge">V0.24</div>
+    <div class="version-badge">V0.25</div>
   </main>
 
   <script src="eleves-manifest.js"></script>
