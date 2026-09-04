@@ -1,14 +1,29 @@
-# Espace Enfants CE2 — Nino
+# PATCH_ESPACE_ENFANTS_V0-8_CARTES_AUTONOMIE
 
-## Version actuelle
-**V0.7**
+## Version
+V0.8
 
-## Correction V0.7
-- correction de l'affichage du trombinoscope ;
-- les 15 photos 2026-2027 sont incluses dans le patch ;
-- chaque photo a été réencodée en JPEG RGB standard compatible navigateur ;
-- noms de fichiers simplifiés pour GitHub Pages ;
-- ajout d'un suffixe de cache `?v=07` afin d'éviter l'affichage d'anciennes images.
+## Contenu du patch
+Ce patch améliore la page **« Je ne sais pas quoi faire »**.
 
-## Élèves présents
-Anis, Assya, Bilal, Espoir, Fahd, Hamza, Jinene, Khadidja, Mohamed  S, Mohamed Z, Rayan, Sayf, Yaman, Yazdan, Younis
+### Modifications
+- cartes plus grandes et plus visuelles ;
+- titres simplifiés pour les CE2 ;
+- grosses icônes bien repérables ;
+- texte plus court et plus concret ;
+- bouton **« Choisir »** dans chaque carte ;
+- réponse de Nino conservée après le clic ;
+- badge de version mis à jour en **V0.8**.
+
+## Fichiers à remplacer
+- `je-ne-sais-pas-quoi-faire.html`
+- `autonomie.js`
+- `style.css`
+
+## Installation
+1. Ouvrir le dossier local du dépôt `espace-enfants-ce2`.
+2. Copier-coller les 3 fichiers du patch.
+3. Accepter le remplacement.
+4. Dans GitHub Desktop : **Commit to main**.
+5. Puis cliquer sur **Push origin**.
+6. Recharger le site avec **Ctrl + F5**.

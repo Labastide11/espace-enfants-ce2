@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Je ne sais pas quoi faire — Nino — V0.7</title>
+  <title>Je ne sais pas quoi faire — Nino — V0.8</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,33 +22,50 @@
     </section>
 
     <section class="choice-grid" aria-label="Choisir ma situation">
-      <button class="choice-btn choice-unfinished" data-choice="unfinished">
-        ✅ Je n’ai pas fini mon travail
-        <small>Il me reste quelque chose à faire.</small>
+      <button class="choice-btn choice-unfinished" data-choice="unfinished" type="button">
+        <span class="choice-icon" aria-hidden="true">✅</span>
+        <span class="choice-title">Je continue</span>
+        <span class="choice-subtitle">Je n’ai pas fini mon travail.</span>
+        <span class="choice-desc">Je reprends calmement ce que j’étais en train de faire.</span>
+        <span class="choice-cta">Choisir</span>
       </button>
 
-      <button class="choice-btn choice-check" data-choice="check">
-        🔎 J’ai fini, je vérifie
-        <small>Je veux être sûr que mon travail est prêt.</small>
+      <button class="choice-btn choice-check" data-choice="check" type="button">
+        <span class="choice-icon" aria-hidden="true">🔎</span>
+        <span class="choice-title">Je vérifie</span>
+        <span class="choice-subtitle">J’ai fini, mais je veux être sûr.</span>
+        <span class="choice-desc">Je relis, je corrige et je regarde si tout est complet.</span>
+        <span class="choice-cta">Choisir</span>
       </button>
 
-      <button class="choice-btn choice-done" data-choice="done">
-        📚 J’ai vraiment terminé
-        <small>Mon travail est fini et vérifié.</small>
+      <button class="choice-btn choice-done" data-choice="done" type="button">
+        <span class="choice-icon" aria-hidden="true">🎉</span>
+        <span class="choice-title">J’ai terminé</span>
+        <span class="choice-subtitle">Mon travail est fini et vérifié.</span>
+        <span class="choice-desc">Je peux choisir une activité calme et autonome.</span>
+        <span class="choice-cta">Choisir</span>
       </button>
 
-      <button class="choice-btn choice-stuck" data-choice="stuck">
-        🤝 Je suis bloqué
-        <small>Je n’arrive pas à continuer seul.</small>
+      <button class="choice-btn choice-stuck" data-choice="stuck" type="button">
+        <span class="choice-icon" aria-hidden="true">🙋</span>
+        <span class="choice-title">J’ai besoin d’aide</span>
+        <span class="choice-subtitle">Je n’arrive pas à continuer seul.</span>
+        <span class="choice-desc">Je cherche la bonne aide pour avancer.</span>
+        <span class="choice-cta">Choisir</span>
       </button>
     </section>
 
     <section class="nino-answer" id="nino-answer" hidden>
-      <h2 id="answer-title"></h2>
+      <div class="answer-head">
+        <div class="answer-bubble">🤖 Nino te répond</div>
+        <h2 id="answer-title"></h2>
+        <p class="answer-subtitle">Lis les étapes et fais-les dans l’ordre.</p>
+      </div>
       <div class="action-list" id="action-list"></div>
-      <button class="restart" id="restart">← Choisir une autre situation</button>
+      <button class="restart" id="restart" type="button">← Choisir une autre situation</button>
     </section>
-    <div class="version-badge">V0.7</div>
+
+    <div class="version-badge">V0.8</div>
   </main>
 
   <script src="autonomie.js"></script>

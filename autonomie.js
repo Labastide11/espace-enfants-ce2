@@ -1,57 +1,64 @@
 const advice = {
   unfinished: {
-    title: "✅ Nino te conseille :",
+    title: "✅ Tu continues ton travail",
     actions: [
-      "📖 Relis la consigne une fois.",
-      "👀 Regarde ce qu’il te reste à faire.",
-      "✏️ Reprends calmement ton travail."
+      "📖 Je relis la consigne une fois.",
+      "👀 Je regarde ce qu’il me reste à faire.",
+      "✏️ Je reprends calmement mon travail.",
+      "✅ Quand j’ai fini, je peux revenir choisir une autre carte."
     ]
   },
   check: {
-    title: "🔎 Avant de dire « fini » :",
+    title: "🔎 Tu vérifies avant de rendre",
     actions: [
-      "📖 Relis tes réponses.",
-      "✏️ Vérifie ton écriture et ta présentation.",
-      "✅ Regarde si tu as répondu à toute la consigne."
+      "📖 Je relis mes réponses.",
+      "✏️ Je corrige si je vois une erreur.",
+      "🧼 Je vérifie la présentation et l’écriture.",
+      "✅ Je regarde si j’ai bien répondu à toute la consigne."
     ]
   },
   done: {
-    title: "📚 Bravo, tu as terminé !",
+    title: "🎉 Bravo, tu as terminé !",
     actions: [
-      "📖 Tu peux lire tranquillement.",
-      "✏️ Tu peux écrire ou dessiner calmement.",
-      "🧩 Tu peux choisir une activité autonome."
+      "📚 Je peux lire tranquillement.",
+      "✏️ Je peux dessiner ou écrire calmement.",
+      "🧩 Je peux faire une activité autonome autorisée.",
+      "😊 Je reste calme et silencieux."
     ]
   },
   stuck: {
-    title: "🤝 Nino t’aide à te débloquer :",
+    title: "🙋 Voici comment demander de l’aide",
     actions: [
-      "📖 Relis la consigne.",
-      "👀 Regarde un exemple ou ce que tu as déjà fait.",
-      "🤝 Demande de l’aide à un camarade.",
-      "👨‍🏫 Si tu es toujours bloqué, demande au maître."
+      "📖 Je relis la consigne une fois.",
+      "👀 Je regarde un exemple ou ce que j’ai déjà fait.",
+      "🤝 Je demande d’abord à un camarade aidant.",
+      "👨‍🏫 Si je suis encore bloqué, je demande au maître."
     ]
   }
 };
 
-const answer = document.querySelector("#nino-answer");
-const title = document.querySelector("#answer-title");
-const list = document.querySelector("#action-list");
-const choices = document.querySelector(".choice-grid");
+const answer = document.querySelector('#nino-answer');
+const title = document.querySelector('#answer-title');
+const list = document.querySelector('#action-list');
+const choices = document.querySelector('.choice-grid');
 
-document.querySelectorAll("[data-choice]").forEach((button) => {
-  button.addEventListener("click", () => {
-    const item = advice[button.dataset.choice];
-    title.textContent = item.title;
-    list.innerHTML = item.actions.map(action => `<div class="action-item">${action}</div>`).join("");
-    answer.hidden = false;
-    choices.style.display = "none";
-    answer.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
+function openAnswer(choiceKey) {
+  const item = advice[choiceKey];
+  title.textContent = item.title;
+  list.innerHTML = item.actions
+    .map((action, index) => `<div class="action-item"><span class="action-number">${index + 1}</span><span class="action-text">${action}</span></div>`)
+    .join('');
+  answer.hidden = false;
+  choices.style.display = 'none';
+  answer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+document.querySelectorAll('[data-choice]').forEach((button) => {
+  button.addEventListener('click', () => openAnswer(button.dataset.choice));
 });
 
-document.querySelector("#restart").addEventListener("click", () => {
+document.querySelector('#restart').addEventListener('click', () => {
   answer.hidden = true;
-  choices.style.display = "grid";
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  choices.style.display = 'grid';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
