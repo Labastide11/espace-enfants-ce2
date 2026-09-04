@@ -1,21 +1,21 @@
 # Espace Enfants CE2 — Nino
 
 ## Version actuelle
-**V0.3**
+**V0.4**
 
-## Rubriques
-- 🤝 J’aide — à venir
-- 🧭 Je ne sais pas quoi faire — fonctionnel
-- 🧹 Mon métier — première version fonctionnelle
+## Nouveauté V0.4 — J'aide
+- ajout d'une vraie page **J'aide**
+- trombinoscope **prénom + portrait**
+- 20 portraits repris du dossier `assets/photos-eleves/` de Progressions CE2
+- sélection de l'élève par simple clic
+- choix suivant : **Je peux aider** / **J'ai besoin d'aide**
+- portrait neutre de secours si une image est absente
 
-## Mon métier
-- 12 métiers
-- 2 élèves par métier
-- rotation chaque lundi
-- les binômes pourront changer au fil des semaines
-- les affectations réelles seront ajoutées dans une étape suivante
+## Déjà fonctionnel
+- 🧭 Je ne sais pas quoi faire
+- 🧹 Mon métier
 
-## Phase 2
-- Nos réussites
-- Les idées de la classe
-- Messages gentils
+## Étape suivante
+Construire les deux parcours de J'aide sans texte obligatoire :
+1. proposer son aide ;
+2. demander de l'aide et choisir un camarade aidant.

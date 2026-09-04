@@ -448,3 +448,141 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* V0.4 — J'aide : trombinoscope */
+.help-page {
+  width: min(1180px, 95vw);
+  margin: 0 auto;
+  padding: 22px 0 44px;
+}
+
+.help-intro {
+  background: #fff;
+  border-radius: 28px;
+  padding: 18px 24px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+}
+
+.help-intro h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  color: #16734c;
+}
+
+.help-intro p {
+  margin: 8px 0 0;
+  font-size: 1.12rem;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.student-card {
+  appearance: none;
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 10px 14px;
+  background: #fff;
+  cursor: pointer;
+  color: #17324d;
+  box-shadow: 0 8px 20px rgba(41,89,120,.12);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.student-card:hover,
+.student-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(41,89,120,.17);
+  outline: 4px solid rgba(49,167,111,.18);
+}
+
+.student-card.is-selected {
+  outline: 5px solid #44c182;
+  background: #effcf5;
+}
+
+.student-photo-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 19px;
+  background: #eaf4f8;
+}
+
+.student-photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.student-firstname {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+.help-choice {
+  margin-top: 22px;
+  background: #fff;
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+  text-align: center;
+}
+
+.help-choice[hidden] {
+  display: none;
+}
+
+.help-choice h2 {
+  margin: 0 0 14px;
+  color: #16734c;
+}
+
+.help-choice-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.help-choice-btn {
+  border: 0;
+  border-radius: 20px;
+  padding: 18px 14px;
+  min-height: 90px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.help-choice-btn--give { background: #cff4dc; color: #1e6846; }
+.help-choice-btn--need { background: #dff2ff; color: #175f8e; }
+
+.help-note {
+  margin: 14px 0 0;
+  color: #627888;
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .student-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .student-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .student-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .help-choice-actions { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J’aide — Nino — V0.4</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="help-page">
+    <div class="autonomy-top">
+      <a class="back" href="index.html">← Accueil</a>
+      <div class="mini-nino">
+        <img src="assets/nino.png" alt="Nino le robot">
+        <span><strong>Nino organise l’entraide.</strong></span>
+      </div>
+    </div>
+
+    <section class="help-intro">
+      <h1>J’aide</h1>
+      <p><strong>Commence par choisir ton prénom.</strong><br>Ensuite, Nino te demandera si tu veux aider ou si tu as besoin d’aide.</p>
+    </section>
+
+    <section class="student-grid" id="student-grid" aria-label="Choisir mon prénom"></section>
+
+    <section class="help-choice" id="help-choice" hidden aria-live="polite">
+      <h2 id="help-choice-title"></h2>
+      <div class="help-choice-actions">
+        <button class="help-choice-btn help-choice-btn--give" type="button" data-help-mode="give">🤝 Je peux aider</button>
+        <button class="help-choice-btn help-choice-btn--need" type="button" data-help-mode="need">🙋 J’ai besoin d’aide</button>
+      </div>
+      <p class="help-note" id="help-note">La suite de ces deux parcours sera construite à l’étape suivante.</p>
+    </section>
+
+    <div class="version-badge">V0.4</div>
+  </main>
+
+  <script src="jaide.js"></script>
+</body>
+</html>
