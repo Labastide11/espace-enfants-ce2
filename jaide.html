@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entraide — Nino — V0.12</title>
+  <title>Entraide — Nino — V0.13</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="entraide-v013.css">
 </head>
 <body>
   <main class="help-page">
@@ -18,21 +19,30 @@
 
     <section class="help-intro">
       <h1 id="help-page-title">Entraide</h1>
-      <p id="help-page-intro"><strong>Commence par choisir ton prénom.</strong></p>
+      <p id="help-page-intro"></p>
+    </section>
+
+    <section class="status-legend" aria-label="Légende">
+      <span><i class="dot dot-neutral"></i> Je travaille</span>
+      <span><i class="dot dot-helper"></i> Disponible pour aider</span>
+      <span><i class="dot dot-need"></i> Besoin d’aide</span>
     </section>
 
     <section class="student-grid" id="student-grid" aria-label="Choisir mon prénom"></section>
 
-    <section class="help-choice" id="help-choice" hidden aria-live="polite">
-      <h2 id="help-choice-title"></h2>
-      <div class="help-choice-actions" id="help-choice-actions">
-        <button class="help-choice-btn help-choice-btn--give" type="button" data-help-mode="give">🤝 Je peux aider</button>
-        <button class="help-choice-btn help-choice-btn--need" type="button" data-help-mode="need">🙋 J’ai besoin d’aide</button>
-      </div>
-      <p class="help-note" id="help-note"></p>
+    <section class="help-panel" id="help-panel" hidden aria-live="polite">
+      <h2 id="panel-title"></h2>
+      <div id="panel-content"></div>
+      <button class="secondary-action" id="cancel-panel" type="button">← Revenir aux photos</button>
     </section>
 
-    <div class="version-badge">V0.12</div>
+    <section class="helpers-panel" id="helpers-panel" hidden aria-live="polite">
+      <h2>🟢 Qui peut m’aider ?</h2>
+      <p class="helpers-intro">Choisis un camarade disponible.</p>
+      <div class="helpers-grid" id="helpers-grid"></div>
+    </section>
+
+    <div class="version-badge">V0.13</div>
   </main>
 
   <script src="eleves-manifest.js"></script>

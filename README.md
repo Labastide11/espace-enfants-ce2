@@ -1,31 +1,37 @@
-# Espace Enfants CE2 — Patch V0.12
+# Espace Enfants CE2 — V0.13 — Entraide simultanée
 
-## Accueil
-La page d'accueil passe à 4 cartes en grille 2 × 2 :
+## Principe
+Les pages « Je peux aider » et « J’ai besoin d’aide » partagent maintenant le même état.
 
-Première ligne :
-- Je peux aider
-- J’ai besoin d’aide
+Chaque élève a 3 états possibles :
+- ⚪ Je travaille
+- 🟢 Disponible pour aider
+- 🟠 J’ai besoin d’aide
 
-Deuxième ligne :
-- Je ne sais pas quoi faire
-- Mon métier
+## Je peux aider
+Après avoir choisi sa photo, l’enfant choisit seulement :
+- ✅ J’ai eu tout bon
+- 💡 J’ai compris mes erreurs
 
-Les deux nouvelles images fournies sont utilisées directement.
+Il devient alors « 🟢 Disponible pour aider ».
 
-## Navigation
-- `Je peux aider` ouvre `jaide.html?mode=give`
-- `J’ai besoin d’aide` ouvre `jaide.html?mode=need`
+## J’ai besoin d’aide
+L’enfant choisit sa photo puis confirme qu’il est bloqué.
+Il devient « 🟠 J’ai besoin d’aide » et Nino affiche les camarades actuellement disponibles.
 
-Après avoir choisi son portrait, l'enfant arrive directement dans le bon parcours :
-il n'a plus à choisir une seconde fois entre aider et demander de l'aide.
+## Fonctionnement simultané
+- un élève « disponible pour aider » disparaît de la page « J’ai besoin d’aide » ;
+- un élève « j’ai besoin d’aide » disparaît de la page « Je peux aider » ;
+- les changements sont partagés via `localStorage` ;
+- si les deux pages sont ouvertes dans deux onglets/fenêtres du même navigateur, elles se mettent à jour automatiquement.
 
-## Fichiers du patch
+## Retour à l’état normal
+- « ✅ J’ai fini d’aider » remet l’élève en état neutre ;
+- « ✅ Je n’ai plus besoin d’aide » remet également l’élève en état neutre.
+
+## Fichiers
 - `index.html`
-- `accueil-v012.css`
 - `jaide.html`
 - `jaide.js`
-- `assets/je-peux-aider.png`
-- `assets/jai-besoin-aide.png`
-
-Le fichier `style.css` n'est pas remplacé afin de conserver les modifications déjà faites dans les versions précédentes.
+- `entraide-v013.css`
+- `eleves-manifest.js`

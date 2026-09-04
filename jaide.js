@@ -1,35 +1,53 @@
-// Espace Enfants CE2 — Entraide — V0.12
-// L'accueil distingue désormais directement :
-//   ?mode=give -> Je peux aider
-//   ?mode=need -> J'ai besoin d'aide
+// Espace Enfants CE2 — Entraide simultanée — V0.13
 
 const ELEVES = Array.isArray(window.NINO_ELEVES) ? window.NINO_ELEVES : [];
 const FALLBACK = "assets/portraits/portrait_neutre.png";
+const STORAGE_KEY = "nino_entraide_status_v013";
 
 const params = new URLSearchParams(window.location.search);
-const requestedMode = ["give", "need"].includes(params.get("mode"))
-  ? params.get("mode")
-  : "";
+const mode = params.get("mode") === "give" ? "give" : "need";
 
 const grid = document.querySelector("#student-grid");
-const choice = document.querySelector("#help-choice");
-const choiceTitle = document.querySelector("#help-choice-title");
-const choiceActions = document.querySelector("#help-choice-actions");
-const note = document.querySelector("#help-note");
 const pageTitle = document.querySelector("#help-page-title");
 const pageIntro = document.querySelector("#help-page-intro");
+const panel = document.querySelector("#help-panel");
+const panelTitle = document.querySelector("#panel-title");
+const panelContent = document.querySelector("#panel-content");
+const cancelPanel = document.querySelector("#cancel-panel");
+const helpersPanel = document.querySelector("#helpers-panel");
+const helpersGrid = document.querySelector("#helpers-grid");
 
-let selectedStudent = "";
+function loadStatuses() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+    return raw && typeof raw === "object" ? raw : {};
+  } catch {
+    return {};
+  }
+}
 
-if (requestedMode === "give") {
-  pageTitle.textContent = "Je peux aider";
-  pageIntro.innerHTML = "<strong>Choisis ton prénom.</strong><br>Puis Nino te demandera pour quoi tu peux aider.";
-} else if (requestedMode === "need") {
-  pageTitle.textContent = "J’ai besoin d’aide";
-  pageIntro.innerHTML = "<strong>Choisis ton prénom.</strong><br>Puis Nino t’aidera à trouver un camarade.";
-} else {
-  pageTitle.textContent = "Entraide";
-  pageIntro.innerHTML = "<strong>Commence par choisir ton prénom.</strong>";
+function saveStatuses(statuses) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(statuses));
+}
+
+function getStatus(prenom) {
+  const item = loadStatuses()[prenom];
+  return item?.state || "neutral";
+}
+
+function setStatus(prenom, state, extra = {}) {
+  const statuses = loadStatuses();
+  if (state === "neutral") {
+    delete statuses[prenom];
+  } else {
+    statuses[prenom] = {
+      state,
+      updatedAt: Date.now(),
+      ...extra
+    };
+  }
+  saveStatuses(statuses);
+  render();
 }
 
 function esc(value) {
@@ -39,65 +57,190 @@ function esc(value) {
 }
 
 function photoUrl(filename) {
-  return encodeURI(`assets/eleves/${filename}`) + "?v=012";
+  return encodeURI(`assets/eleves/${filename}`) + "?v=013";
 }
 
-grid.innerHTML = ELEVES.map((eleve, index) => `
-  <button class="student-card" type="button" data-student-index="${index}" aria-label="Choisir ${esc(eleve.prenom)}">
-    <span class="student-photo-wrap">
-      <img class="student-photo"
-           src="${photoUrl(eleve.fichier)}"
-           alt="Portrait de ${esc(eleve.prenom)}"
-           loading="lazy">
-    </span>
-    <span class="student-firstname">${esc(eleve.prenom)}</span>
-  </button>
-`).join("");
+function statusBadge(state) {
+  if (state === "helper") return '<span class="student-status status-helper">🟢 Disponible pour aider</span>';
+  if (state === "need") return '<span class="student-status status-need">🟠 J’ai besoin d’aide</span>';
+  return '<span class="student-status status-neutral">⚪ Je travaille</span>';
+}
 
-grid.querySelectorAll(".student-photo").forEach(img => {
-  img.addEventListener("error", () => {
-    if (!img.src.includes("portrait_neutre.png")) img.src = FALLBACK;
-  }, { once: true });
-});
+function visibleInMode(eleve) {
+  const state = getStatus(eleve.prenom);
+  if (mode === "give") return state !== "need";
+  return state !== "helper";
+}
 
-function showMode(mode) {
-  choice.hidden = false;
+function setupHeader() {
+  if (mode === "give") {
+    pageTitle.textContent = "Je peux aider";
+    pageIntro.innerHTML =
+      "<strong>Choisis ta photo.</strong><br>" +
+      "Si tu as tout bon ou si tu as compris tes erreurs, tu peux te rendre disponible.";
+  } else {
+    pageTitle.textContent = "J’ai besoin d’aide";
+    pageIntro.innerHTML =
+      "<strong>Choisis ta photo.</strong><br>" +
+      "Si tu es bloqué, Nino cherchera un camarade disponible.";
+  }
+}
+
+function render() {
+  setupHeader();
+  panel.hidden = true;
+  helpersPanel.hidden = true;
+
+  const visible = ELEVES.filter(visibleInMode);
+
+  grid.innerHTML = visible.map((eleve) => {
+    const state = getStatus(eleve.prenom);
+    return `
+      <button class="student-card state-${state}" type="button"
+              data-student="${esc(eleve.prenom)}"
+              aria-label="Choisir ${esc(eleve.prenom)}">
+        <span class="student-photo-wrap">
+          <img class="student-photo"
+               src="${photoUrl(eleve.fichier)}"
+               alt="Portrait de ${esc(eleve.prenom)}"
+               loading="lazy">
+        </span>
+        <span class="student-firstname">${esc(eleve.prenom)}</span>
+        ${statusBadge(state)}
+      </button>
+    `;
+  }).join("");
+
+  grid.querySelectorAll(".student-photo").forEach(img => {
+    img.addEventListener("error", () => {
+      if (!img.src.includes("portrait_neutre.png")) img.src = FALLBACK;
+    }, { once: true });
+  });
+
+  grid.querySelectorAll("[data-student]").forEach(button => {
+    button.addEventListener("click", () => openStudent(button.dataset.student));
+  });
+}
+
+function openStudent(prenom) {
+  const state = getStatus(prenom);
+  panel.hidden = false;
+  helpersPanel.hidden = true;
+  panelTitle.textContent = prenom;
 
   if (mode === "give") {
-    choiceTitle.textContent = `${selectedStudent}, tu peux aider !`;
-    note.textContent = "🤝 Indique maintenant pour quoi tu peux aider.";
+    if (state === "helper") {
+      panelContent.innerHTML = `
+        <div class="nino-message success">
+          🟢 <strong>${esc(prenom)}, tu es disponible pour aider.</strong>
+        </div>
+        <button class="big-action neutral-btn" type="button" data-action="neutral">
+          ✅ J’ai fini d’aider
+        </button>
+      `;
+    } else {
+      panelContent.innerHTML = `
+        <p class="question"><strong>Pourquoi peux-tu aider ?</strong></p>
+        <div class="reason-grid">
+          <button class="big-action good-btn" type="button" data-reason="allgood">
+            ✅ J’ai eu tout bon
+          </button>
+          <button class="big-action understood-btn" type="button" data-reason="errors">
+            💡 J’ai compris mes erreurs
+          </button>
+        </div>
+      `;
+    }
   } else {
-    choiceTitle.textContent = `${selectedStudent}, tu as besoin d’aide.`;
-    note.textContent = "🙋 Nino va t’aider à trouver un camarade.";
+    if (state === "need") {
+      panelContent.innerHTML = `
+        <div class="nino-message need">
+          🟠 <strong>${esc(prenom)}, Nino cherche quelqu’un pour t’aider.</strong>
+        </div>
+        <button class="big-action neutral-btn" type="button" data-action="neutral">
+          ✅ Je n’ai plus besoin d’aide
+        </button>
+      `;
+      showAvailableHelpers(prenom);
+    } else {
+      panelContent.innerHTML = `
+        <p class="question"><strong>Tu es bloqué et tu as besoin d’aide ?</strong></p>
+        <button class="big-action need-btn" type="button" data-action="need">
+          🙋 Oui, j’ai besoin d’aide
+        </button>
+      `;
+    }
   }
 
-  choice.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  panelContent.querySelectorAll("[data-reason]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      setStatus(prenom, "helper", { reason: btn.dataset.reason });
+      openStudent(prenom);
+    });
+  });
+
+  panelContent.querySelectorAll("[data-action='need']").forEach(btn => {
+    btn.addEventListener("click", () => {
+      setStatus(prenom, "need");
+      openStudent(prenom);
+    });
+  });
+
+  panelContent.querySelectorAll("[data-action='neutral']").forEach(btn => {
+    btn.addEventListener("click", () => {
+      setStatus(prenom, "neutral");
+    });
+  });
+
+  panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
-grid.querySelectorAll("[data-student-index]").forEach(button => {
-  button.addEventListener("click", () => {
-    grid.querySelectorAll(".student-card").forEach(card => card.classList.remove("is-selected"));
-    button.classList.add("is-selected");
+function showAvailableHelpers(requester) {
+  const helperNames = ELEVES
+    .filter(e => e.prenom !== requester && getStatus(e.prenom) === "helper");
 
-    const eleve = ELEVES[Number(button.dataset.studentIndex)];
-    selectedStudent = eleve.prenom;
+  helpersPanel.hidden = false;
 
-    if (requestedMode) {
-      choiceActions.hidden = true;
-      showMode(requestedMode);
-    } else {
-      choiceActions.hidden = false;
-      choiceTitle.textContent = `Bonjour ${selectedStudent} ! Que veux-tu faire ?`;
-      note.textContent = "Choisis une des deux possibilités.";
-      choice.hidden = false;
-      choice.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
+  if (!helperNames.length) {
+    helpersGrid.innerHTML = `
+      <div class="no-helper">
+        🤖 Aucun camarade n’est disponible pour le moment.<br>
+        <strong>Demande au maître.</strong>
+      </div>
+    `;
+    return;
+  }
+
+  helpersGrid.innerHTML = helperNames.map(eleve => `
+    <button class="helper-card" type="button" data-helper="${esc(eleve.prenom)}">
+      <img src="${photoUrl(eleve.fichier)}" alt="Portrait de ${esc(eleve.prenom)}">
+      <strong>${esc(eleve.prenom)}</strong>
+      <span>🟢 Disponible</span>
+    </button>
+  `).join("");
+
+  helpersGrid.querySelectorAll("[data-helper]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const helper = btn.dataset.helper;
+      helpersGrid.innerHTML = `
+        <div class="chosen-helper">
+          🤝 <strong>Va voir ${esc(helper)}.</strong><br>
+          Explique-lui ce qui te bloque.
+        </div>
+      `;
+    });
   });
+}
+
+cancelPanel.addEventListener("click", () => {
+  panel.hidden = true;
+  helpersPanel.hidden = true;
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-document.querySelectorAll("[data-help-mode]").forEach(button => {
-  button.addEventListener("click", () => {
-    if (!selectedStudent) return;
-    showMode(button.dataset.helpMode);
-  });
+// Mise à jour immédiate si les deux pages sont ouvertes dans deux onglets/fenêtres.
+window.addEventListener("storage", (event) => {
+  if (event.key === STORAGE_KEY) render();
 });
+
+render();
