@@ -450,7 +450,7 @@ h1 {
 }
 
 
-/* V0.4 — J'aide : trombinoscope */
+/* V0.6 — J'aide : trombinoscope */
 .help-page {
   width: min(1180px, 95vw);
   margin: 0 auto;
@@ -585,4 +585,141 @@ h1 {
 @media (max-width: 520px) {
   .student-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .help-choice-actions { grid-template-columns: 1fr; }
+}
+
+
+/* V0.6 — tirage hebdomadaire des métiers */
+.weekly-draw-card {
+  margin-top: 20px;
+  background: linear-gradient(145deg, #fff8c9, #fff);
+  border-radius: 26px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  box-shadow: 0 8px 22px rgba(41,89,120,.11);
+}
+
+.weekly-draw-card h2 {
+  margin: 0 0 5px;
+  color: #6d5400;
+}
+
+.weekly-draw-card p {
+  margin: 0;
+  font-weight: 700;
+  color: #6e7881;
+}
+
+.draw-button {
+  border: 0;
+  border-radius: 16px;
+  padding: 12px 15px;
+  background: #124b78;
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.current-jobs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.assignment-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 17px 18px;
+  box-shadow: 0 8px 20px rgba(41,89,120,.12);
+  border: 3px solid transparent;
+}
+
+.assignment-card--replacement {
+  background: #eef7ff;
+  border-color: #b8dff5;
+}
+
+.assignment-job {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 11px;
+}
+
+.assignment-icon {
+  font-size: 2rem;
+}
+
+.assignment-title {
+  font-size: 1.22rem;
+  font-weight: 900;
+  color: #17324d;
+}
+
+.assignment-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pupil-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: #f2f8fb;
+  font-weight: 900;
+  color: #234c67;
+}
+
+.pupil-chip::before {
+  content: "👤";
+}
+
+.assignment-card--replacement .pupil-chip::before {
+  content: "🔄";
+}
+
+.all-jobs-panel {
+  margin-top: 22px;
+  background: #fff;
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+}
+
+.all-jobs-panel h2 {
+  margin: 0;
+  color: #124b78;
+}
+
+.all-jobs-note {
+  margin: 8px 0 0;
+  color: #657b8b;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.job-card.inactive-this-week {
+  opacity: .67;
+}
+
+.job-card.inactive-this-week .job-pair {
+  background: #f2f2f2;
+  color: #7a7a7a;
+}
+
+@media (max-width: 760px) {
+  .current-jobs {
+    grid-template-columns: 1fr;
+  }
+  .weekly-draw-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }

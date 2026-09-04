@@ -1,4 +1,12 @@
-const jobs = [
+// Espace Enfants CE2 — Mon métier — V0.6
+// Tirage automatique hebdomadaire, binômes et mémorisation locale.
+
+const STUDENTS = [
+  "Anis","Assya","Bilal","Espoir","Fahd","Hamza","Jinene","Khadidja",
+  "Mohamed S","Mohamed Z","Rayan","Sayf","Yaman","Yazdan","Younis"
+];
+
+const JOBS = [
   { icon:"📦", name:"Distributeur", short:"Je distribue et je ramasse.", detail:"Je distribue et je ramasse les cahiers, fiches, fichiers ou le petit matériel demandé.", rule:"Je fais vite, calmement et sans jouer avec le matériel." },
   { icon:"🚶", name:"Chef de rang", short:"Je conduis le rang.", detail:"Je suis placé devant et j’aide le groupe à se déplacer calmement et en sécurité.", rule:"Je marche, j’attends le groupe et je respecte les consignes de déplacement." },
   { icon:"📚", name:"Bibliothécaire", short:"Je prends soin des livres.", detail:"Je range les livres de la bibliothèque de classe et je vérifie qu’ils sont bien remis à leur place.", rule:"Je manipule les livres avec soin." },
@@ -13,28 +21,209 @@ const jobs = [
   { icon:"🤫", name:"Gardien du calme", short:"J’aide la classe à rester calme.", detail:"Je donne l’exemple et je peux rappeler gentiment qu’un moment calme est nécessaire.", rule:"Je ne commande pas les autres : je rappelle calmement la règle." }
 ];
 
+const HISTORY_KEY = "nino_metiers_history_v1";
+const CURRENT_PREFIX = "nino_metiers_week_";
+
+function mondayOf(date = new Date()) {
+  const d = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  const day = d.getDay();
+  const diff = day === 0 ? -6 : 1 - day;
+  d.setDate(d.getDate() + diff);
+  d.setHours(12,0,0,0);
+  return d;
+}
+
+function dateKey(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth()+1).padStart(2,"0");
+  const d = String(date.getDate()).padStart(2,"0");
+  return `${y}-${m}-${d}`;
+}
+
+function formatDate(date) {
+  return new Intl.DateTimeFormat("fr-FR", { day:"numeric", month:"long", year:"numeric" }).format(date);
+}
+
+function shuffled(arr) {
+  const a = [...arr];
+  for (let i=a.length-1; i>0; i--) {
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]] = [a[j],a[i]];
+  }
+  return a;
+}
+
+function normalizePair(a,b) {
+  return [a,b].sort((x,y)=>x.localeCompare(y,"fr")).join("|");
+}
+
+function previousRecord(history, currentKey) {
+  const keys = Object.keys(history).filter(k => k < currentKey).sort();
+  return keys.length ? history[keys[keys.length-1]] : null;
+}
+
+function scoreCandidate(candidate, previous) {
+  if (!previous) return 0;
+  let score = 0;
+  const prevJobByStudent = {};
+  const prevPairs = new Set();
+
+  previous.assignments.forEach(a => {
+    a.students.forEach(s => { prevJobByStudent[s] = a.job; });
+    if (a.students.length === 2) prevPairs.add(normalizePair(a.students[0], a.students[1]));
+  });
+
+  candidate.assignments.forEach(a => {
+    a.students.forEach(s => {
+      if (prevJobByStudent[s] === a.job) score += 12;
+    });
+    if (a.students.length === 2 && prevPairs.has(normalizePair(a.students[0], a.students[1]))) {
+      score += 7;
+    }
+  });
+
+  return score;
+}
+
+function makeCandidate() {
+  const replacement = JOBS.find(j => j.name === "Remplaçant");
+  const normalJobs = JOBS.filter(j => j.name !== "Remplaçant");
+  const chosenJobs = shuffled(normalJobs).slice(0,7);
+  const pupils = shuffled(STUDENTS);
+
+  const assignments = [];
+  for (let i=0; i<7; i++) {
+    assignments.push({
+      job: chosenJobs[i].name,
+      students: [pupils[i*2], pupils[i*2+1]]
+    });
+  }
+
+  assignments.push({
+    job: replacement.name,
+    students: [pupils[14]]
+  });
+
+  return { assignments };
+}
+
+function createWeeklyDraw(weekKey, history) {
+  const previous = previousRecord(history, weekKey);
+  let best = null;
+  let bestScore = Infinity;
+
+  for (let i=0; i<500; i++) {
+    const candidate = makeCandidate();
+    const score = scoreCandidate(candidate, previous);
+    if (score < bestScore) {
+      best = candidate;
+      bestScore = score;
+      if (score === 0) break;
+    }
+  }
+
+  return {
+    week: weekKey,
+    createdAt: new Date().toISOString(),
+    assignments: best.assignments
+  };
+}
+
+function loadWeeklyDraw() {
+  const monday = mondayOf();
+  const key = dateKey(monday);
+  const storageKey = CURRENT_PREFIX + key;
+  let draw = null;
+
+  try {
+    draw = JSON.parse(localStorage.getItem(storageKey) || "null");
+  } catch (_) {}
+
+  let history = {};
+  try {
+    history = JSON.parse(localStorage.getItem(HISTORY_KEY) || "{}");
+  } catch (_) {}
+
+  if (!draw || !Array.isArray(draw.assignments)) {
+    draw = createWeeklyDraw(key, history);
+    localStorage.setItem(storageKey, JSON.stringify(draw));
+    history[key] = draw;
+
+    const keys = Object.keys(history).sort();
+    while (keys.length > 10) {
+      delete history[keys.shift()];
+    }
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(history));
+  }
+
+  return { draw, monday };
+}
+
+const { draw, monday } = loadWeeklyDraw();
+
+document.querySelector("#week-note").textContent =
+  `🔄 Semaine du lundi ${formatDate(monday)}`;
+
+document.querySelector("#draw-status").textContent =
+  "Le tirage est mémorisé pour toute la semaine. Un nouveau tirage sera créé automatiquement lundi prochain.";
+
+const jobByName = Object.fromEntries(JOBS.map(job => [job.name, job]));
+const current = document.querySelector("#current-jobs");
+
+current.innerHTML = draw.assignments.map(a => {
+  const job = jobByName[a.job];
+  const cls = a.job === "Remplaçant" ? "assignment-card assignment-card--replacement" : "assignment-card";
+  return `
+    <article class="${cls}">
+      <div class="assignment-job">
+        <span class="assignment-icon">${job.icon}</span>
+        <span class="assignment-title">${job.name}</span>
+      </div>
+      <div class="assignment-pair">
+        ${a.students.map(s => `<span class="pupil-chip">${s}</span>`).join("")}
+      </div>
+    </article>
+  `;
+}).join("");
+
+const assignedByJob = Object.fromEntries(draw.assignments.map(a => [a.job,a.students]));
 const grid = document.querySelector("#jobs-grid");
+grid.innerHTML = JOBS.map((job, index) => {
+  const assigned = assignedByJob[job.name];
+  return `
+    <button class="job-card ${assigned ? "" : "inactive-this-week"}" data-job="${index}">
+      <span class="job-icon">${job.icon}</span>
+      <span class="job-name">${job.name}</span>
+      <span class="job-short">${job.short}</span>
+      <span class="job-pair">${
+        assigned
+          ? `👥 ${assigned.join(" + ")}`
+          : "⏸ Pas attribué cette semaine"
+      }</span>
+    </button>
+  `;
+}).join("");
+
+const panel = document.querySelector("#all-jobs-panel");
+const showButton = document.querySelector("#show-all-jobs");
+showButton.addEventListener("click", () => {
+  panel.hidden = !panel.hidden;
+  showButton.textContent = panel.hidden ? "📋 Voir tous les métiers" : "✕ Masquer les métiers";
+  if (!panel.hidden) panel.scrollIntoView({ behavior:"smooth", block:"start" });
+});
+
 const detail = document.querySelector("#job-detail");
 const detailTitle = document.querySelector("#job-detail-title");
 const detailText = document.querySelector("#job-detail-text");
 const detailRule = document.querySelector("#job-detail-rule");
 
-grid.innerHTML = jobs.map((job, index) => `
-  <button class="job-card" data-job="${index}">
-    <span class="job-icon">${job.icon}</span>
-    <span class="job-name">${job.name}</span>
-    <span class="job-short">${job.short}</span>
-    <span class="job-pair">👥 Binôme de la semaine : à attribuer</span>
-  </button>
-`).join("");
-
-document.querySelectorAll("[data-job]").forEach((button) => {
+document.querySelectorAll("[data-job]").forEach(button => {
   button.addEventListener("click", () => {
-    const job = jobs[Number(button.dataset.job)];
+    const job = JOBS[Number(button.dataset.job)];
     detailTitle.textContent = `${job.icon} ${job.name}`;
     detailText.textContent = job.detail;
     detailRule.textContent = `⭐ À retenir : ${job.rule}`;
     detail.hidden = false;
-    detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    detail.scrollIntoView({ behavior:"smooth", block:"nearest" });
   });
 });
