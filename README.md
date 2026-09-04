@@ -1,17 +1,10 @@
-# Espace Enfants CE2 — V0.20 — suppression des badges sur les photos
+# Espace Enfants CE2 — V0.21
 
-Correctif demandé :
-- suppression du badge vert sur les photos dans « Je peux aider » ;
-- suppression du badge orange sur les photos dans « J’ai besoin d’aide » ;
-- conservation des cadres colorés des trois colonnes ;
-- conservation du bandeau supérieur comme repère principal.
+Modification :
+- suppression complète du bandeau supérieur de la page d'accueil ;
+- suppression du bloc avec Nino, « Notre espace à nous », « Notre classe CE2 »
+  et « Bonjour ! Moi, c’est Nino. Que veux-tu faire ? » ;
+- la page commence désormais directement par le bandeau d'entraide et les cartes.
 
-Fichiers principaux :
-- index.html
-- entraide.html
-- entraide-v020.css
-- entraide-v020.js
-- jaide.html
-- eleves-manifest.js
-- accueil-v018.css
-- assets/bandeau-entraide.png
+Fichier à remplacer :
+- `index.html`
