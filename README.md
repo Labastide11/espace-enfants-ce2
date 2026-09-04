@@ -1,22 +1,17 @@
-# Espace Enfants CE2 — V0.19 — Colonnes épurées
+# Espace Enfants CE2 — V0.20 — suppression des badges sur les photos
 
-Modifications de la page unique d'entraide :
+Correctif demandé :
+- suppression du badge vert sur les photos dans « Je peux aider » ;
+- suppression du badge orange sur les photos dans « J’ai besoin d’aide » ;
+- conservation des cadres colorés des trois colonnes ;
+- conservation du bandeau supérieur comme repère principal.
 
-- suppression de « Je travaille » dans le cadre bleu ;
-- suppression de « Je peux aider » dans le cadre vert ;
-- suppression de « J’ai besoin d’aide » dans le cadre orange ;
-- suppression des trois sous-titres associés ;
-- conservation des trois grands cadres colorés bleu / vert / orange ;
-- le bandeau supérieur reste le repère visuel principal ;
-- suppression du badge vert « ✓ Je peux aider » sur les photos ;
-- le badge orange « 🙋 J’ai besoin d’aide » est conservé.
-
-Fichiers du patch :
+Fichiers principaux :
 - index.html
-- accueil-v018.css
 - entraide.html
-- entraide-v019.css
-- entraide-v019.js
+- entraide-v020.css
+- entraide-v020.js
 - jaide.html
 - eleves-manifest.js
+- accueil-v018.css
 - assets/bandeau-entraide.png
