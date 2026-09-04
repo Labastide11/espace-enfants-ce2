@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon métier — Nino — V0.3</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="jobs-page">
+    <div class="autonomy-top">
+      <a class="back" href="index.html">← Accueil</a>
+      <div class="mini-nino">
+        <img src="assets/nino.png" alt="Nino le robot">
+        <span><strong>Nino te rappelle ta mission.</strong></span>
+      </div>
+    </div>
+
+    <section class="jobs-intro">
+      <h1>Mon métier</h1>
+      <p>Chaque métier est réalisé par <strong>2 élèves</strong>.</p>
+      <div class="week-note">🔄 Les métiers changent chaque lundi.</div>
+    </section>
+
+    <section class="jobs-grid" id="jobs-grid" aria-label="Les métiers de la classe"></section>
+
+    <section class="job-detail" id="job-detail" hidden>
+      <h2 id="job-detail-title"></h2>
+      <p id="job-detail-text"></p>
+      <p class="job-rule" id="job-detail-rule"></p>
+    </section>
+
+    <div class="version-badge">V0.3</div>
+  </main>
+
+  <script src="metiers.js"></script>
+</body>
+</html>

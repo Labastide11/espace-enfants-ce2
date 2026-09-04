@@ -1,24 +1,21 @@
 # Espace Enfants CE2 — Nino
 
-Première base du nouveau site de classe pensé pour être utilisé et, à terme, géré par les élèves.
+## Version actuelle
+**V0.3**
 
-## Identité
-- Nom affiché : **Notre classe CE2**
-- Mascotte : **Nino le robot**
-- Interface : très enfantine, lisible sur tablette, gros boutons et peu de texte.
+## Rubriques
+- 🤝 J’aide — à venir
+- 🧭 Je ne sais pas quoi faire — fonctionnel
+- 🧹 Mon métier — première version fonctionnelle
 
-## Rubriques de la première phase
-1. **J’aide**
-2. **Je ne sais pas quoi faire**
-3. **Mes responsabilités**
+## Mon métier
+- 12 métiers
+- 2 élèves par métier
+- rotation chaque lundi
+- les binômes pourront changer au fil des semaines
+- les affectations réelles seront ajoutées dans une étape suivante
 
-## À garder pour une phase 2
+## Phase 2
 - Nos réussites
 - Les idées de la classe
 - Messages gentils
-
-## État de cette version
-Cette version pose seulement le squelette visuel de l’accueil.
-Aucune donnée élève n’est stockée et aucune synchronisation n’est encore activée.
-
-Prochaine étape prévue : construire **Je ne sais pas quoi faire**.
