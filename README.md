@@ -1,27 +1,23 @@
-# Espace Enfants CE2 — V0.10
+# Espace Enfants CE2 — V0.11 corrective
 
-## Page « Je ne sais pas quoi faire »
+## Correction du trombinoscope
+- Anis réintégré
+- Assya réintégrée
+- Mohamed S utilise le fichier `Mohamed_S.jpg`
+- Mohamed Z utilise le fichier `Mohamed_Z.jpg`
+- la liste est générée à partir des photos réellement intégrées
 
-Les quatre anciennes cartes textuelles sont remplacées par les quatre illustrations validées :
+## Élèves présents (15)
+Anis, Assya, Bilal, Espoir, Fahd, Hamza, Jinene, Khadidja, Mohamed S, Mohamed Z, Rayan, Sayf, Yaman, Yazdan, Younis
 
-- Je continue
-- Je vérifie
-- J’ai terminé
-- J’ai besoin d’aide
+## Fichiers à remplacer / ajouter
+- `jaide.html`
+- `jaide.js`
+- `eleves-manifest.js`
+- dossier `assets/eleves/`
 
-Chaque illustration est cliquable et conserve le fonctionnement existant de Nino.
-
-Sous les images, les sous-titres restent affichés :
-- « Je reprends calmement ce que j’étais en train de faire. »
-- « Je veux être sûr que mon travail est prêt. »
-- « Mon travail est fini et vérifié. »
-- « Je n’arrive pas à continuer seul. »
-
-## Fichiers du patch
-- `je-ne-sais-pas-quoi-faire.html`
-- `autonomie.js`
-- `style.css`
-- `assets/autonomie/je-continue.png`
-- `assets/autonomie/je-verifie.png`
-- `assets/autonomie/jai-termine.png`
-- `assets/autonomie/jai-besoin-aide.png`
+## À supprimer si présents
+- `Mohamed  S.jpg`
+- `Mohamed Z.jpg`
+- `mohamed-s.jpg`
+- `mohamed-z.jpg`
