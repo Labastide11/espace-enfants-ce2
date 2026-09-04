@@ -563,7 +563,7 @@ h1 {
 }
 
 
-/* V0.9 — J'aide : trombinoscope */
+/* V0.10 — J'aide : trombinoscope */
 .help-page {
   width: min(1180px, 95vw);
   margin: 0 auto;
@@ -701,7 +701,7 @@ h1 {
 }
 
 
-/* V0.9 — tirage hebdomadaire des métiers */
+/* V0.10 — tirage hebdomadaire des métiers */
 .weekly-draw-card {
   margin-top: 20px;
   background: linear-gradient(145deg, #fff8c9, #fff);
@@ -834,5 +834,68 @@ h1 {
   .weekly-draw-card {
     align-items: flex-start;
     flex-direction: column;
+  }
+}
+
+
+/* V0.10 — cartes illustrées de la page « Je ne sais pas quoi faire » */
+.choice-grid-images {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.choice-image-card {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #fff;
+  color: #17324d;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 10px 0 rgba(39, 76, 99, .07), 0 18px 28px rgba(41,89,120,.14);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.choice-image-card:hover,
+.choice-image-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 0 rgba(39, 76, 99, .07), 0 24px 34px rgba(41,89,120,.18);
+  outline: 4px solid rgba(18,75,120,.13);
+}
+
+.choice-image-card:active {
+  transform: translateY(1px);
+}
+
+.choice-image-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.choice-image-subtitle {
+  display: block;
+  min-height: 66px;
+  padding: 14px 16px 16px;
+  font-size: 1.05rem;
+  line-height: 1.35;
+  font-weight: 900;
+  background: rgba(255,255,255,.97);
+}
+
+@media (max-width: 700px) {
+  .choice-grid-images {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-image-card img {
+    aspect-ratio: 16 / 10;
+  }
+
+  .choice-image-subtitle {
+    min-height: auto;
   }
 }

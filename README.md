@@ -1,36 +1,27 @@
-# Espace Enfants CE2 — Nino
+# Espace Enfants CE2 — V0.10
 
-## Version actuelle
-**V0.9**
+## Page « Je ne sais pas quoi faire »
 
-## Correction V0.9 — trombinoscope
-La liste n’est plus écrite à la main dans `jaide.js`.
+Les quatre anciennes cartes textuelles sont remplacées par les quatre illustrations validées :
 
-Le fichier `eleves-manifest.js` a été généré directement à partir des fichiers réellement présents dans `assets/eleves/`.
+- Je continue
+- Je vérifie
+- J’ai terminé
+- J’ai besoin d’aide
 
-### Élèves présents dans cette V0.9
-Bilal, Espoir, Fahd, Hamza, Jinene, Khadidja, Mohamed  S, Mohamed Z, Rayan, Sayf, Yaman, Yazdan, Younis
+Chaque illustration est cliquable et conserve le fonctionnement existant de Nino.
 
-### Élèves retirés
-- Anis
-- Assya
+Sous les images, les sous-titres restent affichés :
+- « Je reprends calmement ce que j’étais en train de faire. »
+- « Je veux être sûr que mon travail est prêt. »
+- « Mon travail est fini et vérifié. »
+- « Je n’arrive pas à continuer seul. »
 
-### Important : fichiers à supprimer du dépôt
-Avant le commit, supprime manuellement dans `assets/eleves/` les anciens fichiers qui resteraient encore :
-- `anis.jpg`
-- `assya.jpg`
-- `mohamed-s.jpg`
-- `mohamed-z.jpg`
-
-La V0.9 utilise les noms d’origine :
-- `Mohamed  S.jpg`
-- `Mohamed Z.jpg`
-
-Ainsi, il n’y a plus de doublon de noms pour Mohamed.
-
-## Fichiers nouveaux / remplacés
-- `jaide.html`
-- `jaide.js`
-- `eleves-manifest.js`
-- `assets/eleves/` (photos courantes)
-- `README.md`
+## Fichiers du patch
+- `je-ne-sais-pas-quoi-faire.html`
+- `autonomie.js`
+- `style.css`
+- `assets/autonomie/je-continue.png`
+- `assets/autonomie/je-verifie.png`
+- `assets/autonomie/jai-termine.png`
+- `assets/autonomie/jai-besoin-aide.png`

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Je ne sais pas quoi faire — Nino — V0.9</title>
+  <title>Je ne sais pas quoi faire — Nino — V0.10</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,37 +21,25 @@
       <p>Choisis ce qui ressemble le plus à ta situation.</p>
     </section>
 
-    <section class="choice-grid" aria-label="Choisir ma situation">
-      <button class="choice-btn choice-unfinished" data-choice="unfinished" type="button">
-        <span class="choice-icon" aria-hidden="true">✅</span>
-        <span class="choice-title">Je continue</span>
-        <span class="choice-subtitle">Je n’ai pas fini mon travail.</span>
-        <span class="choice-desc">Je reprends calmement ce que j’étais en train de faire.</span>
-        <span class="choice-cta">Choisir</span>
+    <section class="choice-grid choice-grid-images" aria-label="Choisir ma situation">
+      <button class="choice-image-card" data-choice="unfinished" type="button">
+        <img src="assets/autonomie/je-continue.png" alt="Je continue">
+        <span class="choice-image-subtitle">Je reprends calmement ce que j’étais en train de faire.</span>
       </button>
 
-      <button class="choice-btn choice-check" data-choice="check" type="button">
-        <span class="choice-icon" aria-hidden="true">🔎</span>
-        <span class="choice-title">Je vérifie</span>
-        <span class="choice-subtitle">J’ai fini, mais je veux être sûr.</span>
-        <span class="choice-desc">Je relis, je corrige et je regarde si tout est complet.</span>
-        <span class="choice-cta">Choisir</span>
+      <button class="choice-image-card" data-choice="check" type="button">
+        <img src="assets/autonomie/je-verifie.png" alt="Je vérifie">
+        <span class="choice-image-subtitle">Je veux être sûr que mon travail est prêt.</span>
       </button>
 
-      <button class="choice-btn choice-done" data-choice="done" type="button">
-        <span class="choice-icon" aria-hidden="true">🎉</span>
-        <span class="choice-title">J’ai terminé</span>
-        <span class="choice-subtitle">Mon travail est fini et vérifié.</span>
-        <span class="choice-desc">Je peux choisir une activité calme et autonome.</span>
-        <span class="choice-cta">Choisir</span>
+      <button class="choice-image-card" data-choice="done" type="button">
+        <img src="assets/autonomie/jai-termine.png" alt="J’ai terminé">
+        <span class="choice-image-subtitle">Mon travail est fini et vérifié.</span>
       </button>
 
-      <button class="choice-btn choice-stuck" data-choice="stuck" type="button">
-        <span class="choice-icon" aria-hidden="true">🙋</span>
-        <span class="choice-title">J’ai besoin d’aide</span>
-        <span class="choice-subtitle">Je n’arrive pas à continuer seul.</span>
-        <span class="choice-desc">Je cherche la bonne aide pour avancer.</span>
-        <span class="choice-cta">Choisir</span>
+      <button class="choice-image-card" data-choice="stuck" type="button">
+        <img src="assets/autonomie/jai-besoin-aide.png" alt="J’ai besoin d’aide">
+        <span class="choice-image-subtitle">Je n’arrive pas à continuer seul.</span>
       </button>
     </section>
 
@@ -65,7 +53,7 @@
       <button class="restart" id="restart" type="button">← Choisir une autre situation</button>
     </section>
 
-    <div class="version-badge">V0.9</div>
+    <div class="version-badge">V0.10</div>
   </main>
 
   <script src="autonomie.js"></script>
