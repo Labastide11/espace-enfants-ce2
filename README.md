@@ -1,12 +1,18 @@
-# Espace Enfants CE2 — V0.30
+# V0.31 — Bannières des métiers
 
-Petit patch de synchronisation des versions.
+Dans la page **Mon métier**, les titres texte + emoji sont remplacés par les bannières illustrées validées pour les 10 métiers :
 
-Modification unique sur la page d'accueil :
-- `<title>` passe de `V0.21` à `V0.30` ;
-- badge visible en bas de page passe de `V0.21` à `V0.30`.
+- Distributeur
+- Chef de rang
+- Bibliothécaire
+- Facteur
+- Animateur quoi de neuf
+- Agent d’entretien
+- Écrivain
+- Gardien
+- Perroquet
+- Gardien du calme
 
-Aucune autre modification fonctionnelle ou visuelle.
-
-Fichier à remplacer :
-- `index.html`
+Les bannières sont utilisées dans la répartition hebdomadaire et dans « Voir les métiers ».
+Le badge **+ remplaçant**, les photos, les rotations et les compteurs restent inchangés.
+La page d’accueil est également synchronisée en **V0.31**.
