@@ -1,18 +1,6 @@
-# V0.31 — Bannières des métiers
+# V0.32 — bannière Distributeur
 
-Dans la page **Mon métier**, les titres texte + emoji sont remplacés par les bannières illustrées validées pour les 10 métiers :
-
-- Distributeur
-- Chef de rang
-- Bibliothécaire
-- Facteur
-- Animateur quoi de neuf
-- Agent d’entretien
-- Écrivain
-- Gardien
-- Perroquet
-- Gardien du calme
-
-Les bannières sont utilisées dans la répartition hebdomadaire et dans « Voir les métiers ».
-Le badge **+ remplaçant**, les photos, les rotations et les compteurs restent inchangés.
-La page d’accueil est également synchronisée en **V0.31**.
+- Remplace uniquement la bannière **Distributeur** par la dernière image validée (pile de feuilles).
+- Ajout d’un cache-busting `?v=032` pour forcer l’affichage de la nouvelle image.
+- Synchronisation du numéro de version en V0.32.
+- Aucun changement dans les rotations, les métiers, les photos ou les compteurs.
