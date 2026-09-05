@@ -1,14 +1,12 @@
-# Espace Enfants CE2 — V0.29
+# Espace Enfants CE2 — V0.30
 
-Correctif visuel du rôle secondaire **Remplaçant**.
+Petit patch de synchronisation des versions.
 
-Modifications :
-- le badge affiche désormais **+ remplaçant** ;
-- badge plus grand et plus contrasté ;
-- fond jaune clair, bordure jaune, texte foncé ;
-- aucune modification de la logique de rotation des métiers.
+Modification unique sur la page d'accueil :
+- `<title>` passe de `V0.21` à `V0.30` ;
+- badge visible en bas de page passe de `V0.21` à `V0.30`.
 
-Fichiers à remplacer :
-- `mon-metier.html`
-- `metiers-v029.js`
-- `mon-metier-v029.css`
+Aucune autre modification fonctionnelle ou visuelle.
+
+Fichier à remplacer :
+- `index.html`
