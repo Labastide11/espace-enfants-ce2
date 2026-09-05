@@ -1,0 +1,1262 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: "Trebuchet MS", "Arial Rounded MT Bold", Arial, sans-serif;
+  color: #17324d;
+  background: #eef9ff;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 10%, #fff6b8 0 9%, transparent 10%),
+    radial-gradient(circle at 90% 12%, #d9f5ff 0 11%, transparent 12%),
+    linear-gradient(180deg, #eaf8ff 0%, #fffaf0 100%);
+}
+
+button, a {
+  font: inherit;
+}
+
+.app {
+  width: min(1200px, 94vw);
+  margin: 0 auto;
+  padding: 28px 0 42px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: rgba(255,255,255,.92);
+  border: 4px solid #fff;
+  border-radius: 32px;
+  padding: 20px 28px;
+  box-shadow: 0 10px 28px rgba(41, 89, 120, .13);
+}
+
+.nino-wrap {
+  width: 150px;
+  height: 150px;
+  flex: 0 0 150px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 34px;
+  background: linear-gradient(145deg, #dff7ff, #fff6bd);
+  box-shadow: inset 0 0 0 4px rgba(255,255,255,.9);
+}
+
+.nino-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.hero-text {
+  min-width: 0;
+}
+
+.eyebrow {
+  margin: 0 0 4px;
+  font-weight: 800;
+  color: #327c9d;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 1;
+  color: #124b78;
+}
+
+.hello {
+  margin: 12px 0 0;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.4;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.card {
+  border: 0;
+  padding: 0;
+  border-radius: 30px;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 0 10px 0 rgba(39, 76, 99, .08), 0 16px 30px rgba(39, 76, 99, .12);
+  transition: transform .15s ease, box-shadow .15s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 0 rgba(39, 76, 99, .08), 0 22px 34px rgba(39, 76, 99, .16);
+  outline: 4px solid rgba(18, 75, 120, .16);
+}
+
+.card:active {
+  transform: translateY(1px);
+}
+
+.image-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+/* Page autonomie */
+.autonomy-page {
+  width: min(980px, 94vw);
+  margin: 0 auto;
+  padding: 22px 0 44px;
+}
+
+.autonomy-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: #fff;
+  color: #124b78;
+  font-weight: 900;
+  border-radius: 18px;
+  padding: 12px 16px;
+  box-shadow: 0 6px 16px rgba(41,89,120,.12);
+}
+
+.mini-nino {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mini-nino img {
+  width: 74px;
+  height: 74px;
+  object-fit: contain;
+}
+
+.autonomy-intro {
+  background: #fff;
+  border-radius: 28px;
+  padding: 18px 24px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+}
+
+.autonomy-intro h1 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+}
+
+.autonomy-intro p {
+  margin: 8px 0 0;
+  font-size: 1.15rem;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.choice-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border: 0;
+  border-radius: 30px;
+  min-height: 260px;
+  padding: 22px;
+  color: #17324d;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+  box-shadow: 0 10px 0 rgba(39, 76, 99, .08), 0 18px 28px rgba(41,89,120,.14);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.choice-btn:hover,
+.choice-btn:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 0 rgba(39, 76, 99, .08), 0 24px 32px rgba(41,89,120,.18);
+  outline: 4px solid rgba(18,75,120,.13);
+}
+
+.choice-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  font-size: 2rem;
+  background: rgba(255,255,255,.75);
+  box-shadow: inset 0 0 0 3px rgba(255,255,255,.75);
+}
+
+.choice-title {
+  font-size: clamp(1.55rem, 2.7vw, 2rem);
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.choice-subtitle {
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.choice-desc {
+  font-size: 1rem;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #3e5a70;
+  margin-top: auto;
+}
+
+.choice-cta {
+  align-self: flex-end;
+  margin-top: 6px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.88);
+  font-size: .98rem;
+  font-weight: 900;
+  color: #124b78;
+  box-shadow: 0 4px 10px rgba(41,89,120,.12);
+}
+
+.choice-unfinished {
+  background: linear-gradient(180deg, #ffe9a0 0%, #ffe18b 100%);
+}
+
+.choice-check {
+  background: linear-gradient(180deg, #cfeeff 0%, #b7e3fb 100%);
+}
+
+.choice-done {
+  background: linear-gradient(180deg, #d8f7cf 0%, #c5ecb8 100%);
+}
+
+.choice-stuck {
+  background: linear-gradient(180deg, #eedcff 0%, #e1c8fb 100%);
+}
+
+.nino-answer {
+  margin-top: 24px;
+  background: #fff;
+  border-radius: 30px;
+  padding: 24px;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+}
+
+.nino-answer[hidden] {
+  display: none;
+}
+
+.answer-head {
+  margin-bottom: 16px;
+}
+
+.answer-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #eef8ff;
+  color: #124b78;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.nino-answer h2 {
+  margin: 0;
+  color: #124b78;
+  font-size: clamp(1.5rem, 2.7vw, 1.9rem);
+}
+
+.answer-subtitle {
+  margin: 8px 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #59758a;
+}
+
+.action-list {
+  display: grid;
+  gap: 12px;
+}
+
+.action-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: #f6fbff;
+  border: 2px solid #e4f1f8;
+  border-radius: 20px;
+  padding: 14px 16px;
+}
+
+.action-number {
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #124b78;
+  color: #fff;
+  font-weight: 900;
+}
+
+.action-text {
+  font-weight: 800;
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.restart {
+  margin-top: 18px;
+  border: 0;
+  border-radius: 16px;
+  padding: 12px 16px;
+  background: #124b78;
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .image-card img {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 700px) {
+  .choice-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .choice-btn {
+    min-height: 220px;
+    padding: 20px;
+  }
+
+  .autonomy-top {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .app {
+    width: min(96vw, 1200px);
+    padding-top: 14px;
+  }
+
+  .hero {
+    text-align: center;
+    flex-direction: column;
+    padding: 18px;
+    gap: 12px;
+  }
+
+  .nino-wrap {
+    width: 120px;
+    height: 120px;
+    flex-basis: 120px;
+  }
+
+  .cards {
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  .mini-nino span {
+    display: none;
+  }
+
+  .choice-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 1.8rem;
+  }
+
+  .choice-title {
+    font-size: 1.7rem;
+  }
+
+  .choice-cta {
+    align-self: stretch;
+    text-align: center;
+  }
+}
+
+/* Version */
+.version-badge {
+  margin-top: 18px;
+  text-align: right;
+  font-size: .82rem;
+  font-weight: 800;
+  color: #7892a5;
+}
+
+/* Page Mon métier */
+.jobs-page {
+  width: min(1120px, 94vw);
+  margin: 0 auto;
+  padding: 22px 0 44px;
+}
+
+.jobs-intro {
+  background: #fff;
+  border-radius: 28px;
+  padding: 18px 24px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+}
+
+.jobs-intro h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  color: #124b78;
+}
+
+.jobs-intro p {
+  margin: 8px 0 0;
+  font-size: 1.12rem;
+}
+
+.week-note {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: #fff1ad;
+  font-weight: 900;
+  color: #6b5310;
+}
+
+.jobs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.job-card {
+  border: 0;
+  border-radius: 24px;
+  padding: 18px;
+  min-height: 165px;
+  text-align: left;
+  background: #fff;
+  cursor: pointer;
+  color: #17324d;
+  box-shadow: 0 8px 20px rgba(41,89,120,.12);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.job-card:hover,
+.job-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(41,89,120,.16);
+  outline: 4px solid rgba(18,75,120,.12);
+}
+
+.job-icon {
+  font-size: 2.25rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.job-name {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.job-short {
+  display: block;
+  margin-top: 6px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #537086;
+}
+
+.job-pair {
+  display: block;
+  margin-top: 12px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  background: #f3f9fc;
+  font-size: .95rem;
+  font-weight: 800;
+}
+
+.job-detail {
+  margin-top: 22px;
+  background: #fff;
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+}
+
+.job-detail[hidden] {
+  display: none;
+}
+
+.job-detail h2 {
+  margin: 0 0 10px;
+  color: #124b78;
+}
+
+.job-detail p {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.job-rule {
+  margin-top: 14px !important;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: #eef8ff;
+  font-weight: 800;
+}
+
+@media (max-width: 900px) {
+  .jobs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .jobs-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* V0.9 — J'aide : trombinoscope */
+.help-page {
+  width: min(1180px, 95vw);
+  margin: 0 auto;
+  padding: 22px 0 44px;
+}
+
+.help-intro {
+  background: #fff;
+  border-radius: 28px;
+  padding: 18px 24px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+}
+
+.help-intro h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  color: #16734c;
+}
+
+.help-intro p {
+  margin: 8px 0 0;
+  font-size: 1.12rem;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.student-card {
+  appearance: none;
+  border: 0;
+  border-radius: 24px;
+  padding: 10px 10px 14px;
+  background: #fff;
+  cursor: pointer;
+  color: #17324d;
+  box-shadow: 0 8px 20px rgba(41,89,120,.12);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.student-card:hover,
+.student-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(41,89,120,.17);
+  outline: 4px solid rgba(49,167,111,.18);
+}
+
+.student-card.is-selected {
+  outline: 5px solid #44c182;
+  background: #effcf5;
+}
+
+.student-photo-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 19px;
+  background: #eaf4f8;
+}
+
+.student-photo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.student-firstname {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+.help-choice {
+  margin-top: 22px;
+  background: #fff;
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+  text-align: center;
+}
+
+.help-choice[hidden] {
+  display: none;
+}
+
+.help-choice h2 {
+  margin: 0 0 14px;
+  color: #16734c;
+}
+
+.help-choice-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.help-choice-btn {
+  border: 0;
+  border-radius: 20px;
+  padding: 18px 14px;
+  min-height: 90px;
+  font-weight: 900;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.help-choice-btn--give { background: #cff4dc; color: #1e6846; }
+.help-choice-btn--need { background: #dff2ff; color: #175f8e; }
+
+.help-note {
+  margin: 14px 0 0;
+  color: #627888;
+  font-weight: 700;
+}
+
+@media (max-width: 980px) {
+  .student-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (max-width: 720px) {
+  .student-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .student-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .help-choice-actions { grid-template-columns: 1fr; }
+}
+
+
+/* V0.9 — tirage hebdomadaire des métiers */
+.weekly-draw-card {
+  margin-top: 20px;
+  background: linear-gradient(145deg, #fff8c9, #fff);
+  border-radius: 26px;
+  padding: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  box-shadow: 0 8px 22px rgba(41,89,120,.11);
+}
+
+.weekly-draw-card h2 {
+  margin: 0 0 5px;
+  color: #6d5400;
+}
+
+.weekly-draw-card p {
+  margin: 0;
+  font-weight: 700;
+  color: #6e7881;
+}
+
+.draw-button {
+  border: 0;
+  border-radius: 16px;
+  padding: 12px 15px;
+  background: #124b78;
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.current-jobs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.assignment-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 17px 18px;
+  box-shadow: 0 8px 20px rgba(41,89,120,.12);
+  border: 3px solid transparent;
+}
+
+.assignment-card--replacement {
+  background: #eef7ff;
+  border-color: #b8dff5;
+}
+
+.assignment-job {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 11px;
+}
+
+.assignment-icon {
+  font-size: 2rem;
+}
+
+.assignment-title {
+  font-size: 1.22rem;
+  font-weight: 900;
+  color: #17324d;
+}
+
+.assignment-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pupil-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: #f2f8fb;
+  font-weight: 900;
+  color: #234c67;
+}
+
+.pupil-chip::before {
+  content: "👤";
+}
+
+.assignment-card--replacement .pupil-chip::before {
+  content: "🔄";
+}
+
+.all-jobs-panel {
+  margin-top: 22px;
+  background: #fff;
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+}
+
+.all-jobs-panel h2 {
+  margin: 0;
+  color: #124b78;
+}
+
+.all-jobs-note {
+  margin: 8px 0 0;
+  color: #657b8b;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.job-card.inactive-this-week {
+  opacity: .67;
+}
+
+.job-card.inactive-this-week .job-pair {
+  background: #f2f2f2;
+  color: #7a7a7a;
+}
+
+@media (max-width: 760px) {
+  .current-jobs {
+    grid-template-columns: 1fr;
+  }
+  .weekly-draw-card {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+
+/* V0.28 — Mon métier : photos + prénoms dans les cartes */
+.assignment-card {
+  background: #fff;
+  border-radius: 24px;
+  padding: 17px 18px;
+  box-shadow: 0 8px 20px rgba(41,89,120,.12);
+  border: 3px solid transparent;
+}
+
+.assignment-card--replacement {
+  background: #eef7ff;
+  border-color: #b8dff5;
+}
+
+.assignment-job {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.assignment-students {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.assignment-students--single {
+  justify-content: flex-start;
+}
+
+.assignment-student {
+  min-width: 0;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.assignment-student-photo-wrap {
+  display: block;
+  width: 100%;
+  max-width: 170px;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #f5f8fb;
+  box-shadow: inset 0 0 0 1px rgba(18,75,120,.08);
+}
+
+.assignment-student-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.assignment-student-name {
+  display: block;
+  text-align: center;
+  font-size: 1.02rem;
+  font-weight: 900;
+  color: #17324d;
+  line-height: 1.2;
+}
+
+.assignment-card--replacement .assignment-student-photo-wrap {
+  max-width: 190px;
+}
+
+@media (max-width: 900px) {
+  .current-jobs {
+    grid-template-columns: 1fr;
+  }
+
+  .assignment-student-photo-wrap {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 620px) {
+  .assignment-students {
+    gap: 12px;
+  }
+
+  .assignment-student-photo-wrap {
+    max-width: 130px;
+    border-radius: 16px;
+  }
+
+  .assignment-student-name {
+    font-size: .95rem;
+  }
+}
+
+
+/* V0.28 — 12 métiers attribués + cartes déroulantes */
+.assignment-card {
+  overflow: hidden;
+}
+
+.assignment-toggle {
+  appearance: none;
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  font: inherit;
+  cursor: pointer;
+}
+
+.assignment-job {
+  position: relative;
+  padding-right: 34px;
+}
+
+.assignment-chevron {
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #5e7c8f;
+  transition: transform .15s ease;
+}
+
+.assignment-card.is-open .assignment-chevron {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.assignment-detail {
+  margin-top: 14px;
+  padding: 14px 15px;
+  border-top: 2px dashed #dbe8ef;
+  background: #f8fbfd;
+  border-radius: 16px;
+  line-height: 1.45;
+}
+
+.assignment-detail[hidden] {
+  display: none;
+}
+
+.assignment-detail p {
+  margin: 0;
+}
+
+.assignment-detail p + p {
+  margin-top: 10px;
+}
+
+.assignment-rule {
+  color: #365c72;
+}
+
+.job-inline-detail {
+  display: block;
+  margin-top: 12px;
+  padding: 11px 12px;
+  border-radius: 14px;
+  background: #eef8ff;
+  line-height: 1.4;
+  color: #355a70;
+}
+
+.current-jobs {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .current-jobs {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* V0.28 — Bandeau supérieur compact de « Mon métier » */
+.jobs-compact-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 118px;
+  margin-bottom: 18px;
+  padding: 14px 22px;
+  border-radius: 26px;
+  background: rgba(255,255,255,.94);
+  box-shadow: 0 10px 26px rgba(41,89,120,.12);
+}
+
+.jobs-compact-back {
+  position: absolute;
+  left: 18px;
+  top: 18px;
+  z-index: 2;
+}
+
+.jobs-compact-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  padding: 0 110px;
+  text-align: left;
+}
+
+.jobs-compact-nino {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  flex: 0 0 72px;
+}
+
+.jobs-compact-text h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3.5vw, 2.9rem);
+  line-height: 1;
+  color: #124b78;
+}
+
+.jobs-compact-text p {
+  margin: 6px 0 0;
+  font-size: 1.03rem;
+  line-height: 1.25;
+}
+
+.jobs-compact-text .week-note {
+  margin-top: 8px;
+  padding: 7px 12px;
+  font-size: .95rem;
+}
+
+@media (max-width: 760px) {
+  .jobs-compact-header {
+    min-height: 106px;
+    padding: 12px 14px;
+  }
+
+  .jobs-compact-main {
+    gap: 10px;
+    padding: 0 62px 0 76px;
+  }
+
+  .jobs-compact-nino {
+    width: 58px;
+    height: 58px;
+    flex-basis: 58px;
+  }
+
+  .jobs-compact-text h1 {
+    font-size: 2rem;
+  }
+
+  .jobs-compact-text p {
+    font-size: .9rem;
+  }
+
+  .jobs-compact-text .week-note {
+    font-size: .82rem;
+    padding: 6px 9px;
+  }
+
+  .jobs-compact-back {
+    left: 10px;
+    top: 10px;
+  }
+}
+
+
+/* V0.28 — compteur de répartition sur la période */
+.draw-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.draw-button-secondary {
+  background: #eef7ff;
+  color: #124b78;
+  border: 2px solid #b9dff4;
+}
+
+.period-stats-panel {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 28px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(41,89,120,.12);
+}
+
+.period-stats-panel[hidden] {
+  display: none;
+}
+
+.period-stats-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.period-stats-head h2 {
+  margin: 0;
+  color: #124b78;
+}
+
+.period-stats-head p {
+  margin: 6px 0 0;
+  color: #637b8c;
+  font-weight: 700;
+}
+
+.period-reset-button {
+  border: 0;
+  border-radius: 14px;
+  padding: 10px 13px;
+  background: #fff3c4;
+  color: #755813;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.period-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.period-student-card {
+  padding: 13px 14px;
+  border-radius: 18px;
+  background: #f7fbfd;
+  border: 2px solid #e1edf3;
+}
+
+.period-student-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: baseline;
+  margin-bottom: 9px;
+}
+
+.period-student-head strong {
+  font-size: 1.04rem;
+  color: #17324d;
+}
+
+.period-student-head span {
+  font-size: .82rem;
+  color: #6b8190;
+  font-weight: 800;
+}
+
+.period-job-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.period-job-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: #fff;
+  color: #31576d;
+  font-size: .82rem;
+  font-weight: 800;
+  box-shadow: inset 0 0 0 1px #dce9ef;
+}
+
+.period-job-chip b {
+  color: #124b78;
+}
+
+.period-empty {
+  color: #8a9ba7;
+  font-size: .85rem;
+  font-style: italic;
+}
+
+@media (max-width: 800px) {
+  .weekly-draw-card,
+  .period-stats-head {
+    align-items: stretch;
+  }
+
+  .draw-actions {
+    justify-content: stretch;
+  }
+
+  .draw-actions .draw-button {
+    flex: 1 1 210px;
+  }
+
+  .period-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .period-reset-button {
+    align-self: flex-start;
+  }
+}
+
+.assignment-card--replacement-role{border-color:#b8dff5;background:#f5fbff}
+.replacement-badge{display:inline-flex;margin-left:auto;margin-right:30px;padding:5px 9px;border-radius:999px;background:#dcefff;color:#205f86;font-size:.78rem;font-weight:900;white-space:nowrap}
+.replacement-detail{margin-top:12px;padding:12px;border-radius:14px;background:#eaf6ff;color:#315d78;line-height:1.45}
+.period-balance{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:9px}
+.period-balance span{padding:5px 8px;border-radius:999px;background:#eef5f8;color:#48687a;font-size:.78rem;font-weight:800}
