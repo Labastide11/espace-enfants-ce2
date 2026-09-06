@@ -1,0 +1,36 @@
+/* Espace Enfants CE2 — V0.34
+   Accueil tablette paysage : tient dans la hauteur visible sans scroll.
+   Le rendu ordinateur reste inchangé. */
+
+@media (min-width: 900px) and (max-height: 950px) and (orientation: landscape) {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    overflow-y: hidden;
+  }
+
+  .app {
+    /* Réduction proportionnelle de l'accueil uniquement sur tablette paysage.
+       Les images conservent leur ratio, aucune découpe forcée. */
+    width: min(1040px, 92vw);
+    height: 100dvh;
+    padding: 6px 0 6px;
+  }
+
+  .home-entraide {
+    margin-top: 0;
+  }
+
+  .cards-home-v018 {
+    gap: 16px;
+    margin-top: 10px;
+  }
+
+  .version-badge {
+    display: none;
+  }
+}
