@@ -3,9 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon métier — Nino — V0.36</title>
+  <title>Mon métier — Nino — V0.37</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="mon-metier-v031.css">
+  <style>
+    /* V0.37 — affichage pleine largeur sur ordinateur */
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .jobs-page {
+      width: 100% !important;
+      max-width: none !important;
+      margin: 0 !important;
+      padding-left: clamp(14px, 2vw, 36px) !important;
+      padding-right: clamp(14px, 2vw, 36px) !important;
+      box-sizing: border-box;
+    }
+
+    .jobs-compact-header,
+    .weekly-draw-card,
+    .period-stats-panel,
+    .current-jobs,
+    .all-jobs-panel {
+      width: 100%;
+      max-width: none !important;
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 900px) {
+      .jobs-page {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <main class="jobs-page">
@@ -56,10 +94,10 @@
       <div class="jobs-grid" id="jobs-grid"></div>
     </section>
 
-    <div class="version-badge">V0.36</div>
+    <div class="version-badge">V0.37</div>
   </main>
 
   <script src="eleves-manifest.js"></script>
-  <script src="metiers-v036.js"></script>
+  <script src="metiers-v037.js"></script>
 </body>
 </html>
